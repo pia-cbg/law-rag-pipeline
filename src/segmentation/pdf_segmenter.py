@@ -40,7 +40,10 @@ def words_to_lines(words, y_tol=2.0, gap_tol=3.5):
     return sorted(line_items, key=lambda x: x['y'])
 
 def segment_pdf_parsed(parsed_pdf, filename=None, degraded_line_threshold=2, y_tol=2.0, gap_tol=3.5):
-    """페이지별로 lines으로 쪼개 segment화합니다."""
+    """페이지별로 lines으로 쪼개 segment화합니다.
+
+    각 세그먼트(dict)에 'colors': [ ... ] (각 word의 non_stroking_color 리스트) 포함
+    """
     segments = []
     degraded_pages = []
 
@@ -64,17 +67,22 @@ def segment_pdf_parsed(parsed_pdf, filename=None, degraded_line_threshold=2, y_t
                 degraded = True
                 reason = "too_short_or_empty"
 
+            # 모든 단어별 non_stroking_color 추출
+            colors = [w.get("non_stroking_color") for w in line['words']]
+
             segments.append({
                 "segment_id": segment_id,
                 "filename": parsed_pdf['filename'],
                 "page_num": page_num,
                 "text": text,
                 "source_word_indices": line['word_indices'],
+                "colors": colors,
                 "degraded": degraded,
                 "reason": reason
             })
     return {
         "filename": parsed_pdf['filename'] if filename is None else filename,
+        "format": "PDF",
         "segments": segments,
         "degraded_pages": degraded_pages
     }

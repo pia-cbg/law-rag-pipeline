@@ -77,4 +77,9 @@ def parse_pdf(file_path):
     except Exception as e:
         print(f"[PDF PARSER ERROR - DEEP] {file_path}: {e}")
         return None
-    return {"doc_meta": doc_meta, "pages": results}
+    out = {
+        "format": "PDF",
+        "meta": doc_meta,
+        "pages": results,
+    }
+    return out

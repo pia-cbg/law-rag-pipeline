@@ -21,8 +21,8 @@ SUPPORTED_TYPES = {'pdf', 'hwp', 'docx', 'hwpx'}
 INPUT_FOLDER : 원시데이터 저장된 폴더
 OUTPUT_FOLDER : 세그멘테이션 저장될 폴더
 '''
-INPUT_FOLDER = "data/parsed_raw/20260109_1438"
-OUTPUT_FOLDER = "data/segmentation/20260109_1438"
+INPUT_FOLDER = "data/parsed_raw/20260112_0442"
+OUTPUT_FOLDER = "data/segmentation/20260112_0442"
 
 def find_parsed_files(input_dir: str) -> List[str]:
     search_path = os.path.abspath(input_dir)

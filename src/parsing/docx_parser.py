@@ -6,33 +6,6 @@
 # - 기본 불필요한 유니코드/제어문자만 소거
 # """
 
-# from docx import Document
-
-# def parse_docx(file_path):
-#     results = []
-#     doc = Document(file_path)
-
-#     # 1. 패러그래프 추출
-#     for num, para in enumerate(doc.paragraphs):
-#         txt = para.text.strip()
-#         if txt:
-#             results.append({"para_num": num+1, "text": txt})
-
-#     # 2. 표 셀 추출
-#     for t_num, table in enumerate(doc.tables):
-#         for r_idx, row in enumerate(table.rows):
-#             for c_idx, cell in enumerate(row.cells):
-#                 cell_txt = cell.text.strip()
-#                 if cell_txt:
-#                     results.append({
-#                         "cell": True,
-#                         "table": t_num+1,
-#                         "row": r_idx+1,
-#                         "col": c_idx+1,
-#                         "text": cell_txt
-#                     })
-#     return results
-
 from docx import Document
 
 def parse_docx(file_path):
@@ -176,7 +149,8 @@ def parse_docx(file_path):
             "bottom_margin": getattr(section, "bottom_margin", None),
         })
 
-    return {
+    result = {
+        "format": "DOCX",
         "meta": meta,
         "paragraphs": paragraphs,
         "tables": tables,
@@ -185,5 +159,6 @@ def parse_docx(file_path):
         "footers": footers,
         "footnotes": footnotes,
         "endnotes": endnotes,
-        "sections": sections
+        "sections": sections,
     }
+    return result

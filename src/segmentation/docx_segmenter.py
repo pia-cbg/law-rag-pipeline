@@ -73,6 +73,7 @@ def segment_docx_parsed(parsed_docx, filename=None, degraded_para_threshold=2):
 
     return {
         "filename": parsed_docx.get("filename", filename),
+        "format": "DOCX",
         "segments": segments,
         "degraded_pages": [],
         "degraded_segments": degraded_segments
