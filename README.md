@@ -17,6 +17,7 @@ LangChain RAG 연계 워크플로 구축**
 - parsing → segmentation → cleansing → normalization 단계를 거쳐
 - **LangChain/RAG pipeline**(벡터DB/검색/생성형 QA 등)에 최적화된 JSON(또는 텍스트/메타) 구조로 자동 변환
 
+![Pipeline Architecture](./assets/pipeline.png)
 ---
 
 ## 주요 기능/개발 구조
@@ -33,65 +34,39 @@ LangChain RAG 연계 워크플로 구축**
 ## 폴더 구조 예시
 ```
 law-rag-pipeline/
-├── README.md                           # 프로젝트 설명 및 구조 안내
-├── app.py                              # (예시) 진입점, 샘플 app용
-├── data/                               # 문서 및 전처리 결과, 산출물 저장
-│   ├── raw/                            # 수집된 원본 문서
-│   ├── preprocess/                     # 사전 정제/클린징 처리 결과
-│   │   ├── raw_clean/                  # 1차 클린된 파일 저장
-│   │   └── failures/                   # 전처리 실패 파일(오염/중복/에러 등 분류)
-│   ├── segmentation/                   # 세그멘트(조각)화 JSON 저장 (날짜/포맷별)
-│   ├── parsed_raw/                     # 각종 파서(raw→json) 결과 저장
-│   └── normalization/                  # 정규화(RAG-ready) 결과 및 테스트
-│       └── test/                       # normalization 테스트 결과
-├── experiments/                        # 실험/테스트용 로그 및 결과
-│   ├── logs/
-│   └── results/
-└── src/                                
-    ├── normalization/                  # 정규화/클렌징/스키마 통일 코드
-    │   ├── base.py                     # 공통/기본 로직
-    │   ├── docx_normalize.py           # docx 전용 정규화
-    │   ├── cleanser/                   # 전처리/정제 로직 모듈 폴더
-    │   │   ├── __init__.py
-    │   │   ├── generic.py              # 모든 포맷 공통 클렌저
-    │   │   ├── docx_cleanser.py        # docx 타입 특화 클렌저
-    │   │   └── rules/                  # 클렌징 YAML 및 정책 관리
-    │   │       ├── __init__.py
-    │   │       ├── docx_default.yaml   # docx형 기본 클렌징 룰북 (yaml)
-    │   │       └── rules_catalog.py    # 정책명 상수(자동완성 목적) 정의 py
-    │   └── __init__.py
-    ├── parsing/                        # 파서(포맷별 텍스트 추출) 모듈
-    │   ├── __init__.py
-    │   ├── base.py
-    │   ├── docx_parser.py
-    │   ├── hwp_parser.py
-    │   └── pdf_parser.py
-    ├── pipelines/                      # 전처리 전체 배치/자동 워크플로우
-    │   ├── __init__.py
-    │   ├── full_pipeline.py            # end-to-end 전체 파이프
-    │   ├── deep_parse_folder.py        # RAW 파서
-    │   └── segmentation_folder.py      # 세그먼트
-    ├── preprocessing/                  # 파일명검증/고급 품질관리 등 1차 정제
-    │   ├── __init__.py
-    │   └── raw_cleaner.py
-    ├── prompts/                        # LLM 프롬프트(예정)
-    ├── rag/                            # RAG & 벡터DB 연동 코드 (예정)
-    │   ├── embed/
-    │   └── vectorstore/
-    └── segmentation/                   # 문서 조각화(세그멘트) 모듈
-        ├── __init__.py
-        ├── base.py
-        ├── docx_segmenter.py
-        ├── hwp_segmenter.py
-        └── pdf_segmenter.py
+├── README.md               # 시스템 아키텍처 및 파이프라인 가이드
+├── app.py                  # 메인 실행 엔트리포인트
+├── assets/                 # pipeline.png 등 문서용 이미지
+├── data/                   # [Data Lake] 단계별 데이터 저장소
+│   ├── raw/                # 최초 수집 원본 (Dirty Raw)
+│   ├── preprocess/         # 1차 필터링 및 파일 무결성 검증
+│   │   ├── raw_clean/      # 필터 통과 원본
+│   │   └── failures/       # 실패 파일 (extension, size, corrupt 등 분류)
+│   ├── parsed_raw/         # Phase 1: 포맷별 JSON 추출 결과 (날짜별)
+│   ├── segmentation/       # Phase 2: 조각화(Segment) 완료된 JSON
+│   └── normalization/      # Phase 3: 최종 정제 및 RAG 최적화 데이터
+│       └── 20260112_...    # 타임스탬프 기반 관리 (01_Cleansed 등)
+├── src/                    # [Source Code] 핵심 로직
+│   ├── preprocessing/      # 2. Filtering 단계 (raw_cleaner.py)
+│   ├── parsing/            # 3. Deep Parsing (PDF, HWP, DOCX 전용 파서)
+│   ├── segmentation/       # 4. Segmentation (문서 조각화 로직)
+│   ├── normalization/      # 5. Normalization (가장 핵심적인 정제/구조화)
+│   │   ├── cleanser/       # 5.1 Cleaning (Generic, PDF, HWP 전용 클렌저)
+│   │   │   └── rules/      # 세분화된 YAML 배치
+│   │   ├── structurer/     # 5.2 Structuring (계층 구조화 예정)
+│   │   └── rag_formatter/  # 5.3 RAG Formatting (메타데이터 태깅 예정)
+│   ├── pipelines/          # 전 공정 자동화 워크플로우 (full_pipeline.py)
+│   └── rag/                # 6 & 7. VectorDB 및 RAG 연동부 (예정)
+└── experiments/            # 실험 로그 및 벤치마크 결과
 ```
 ---
 
 ## 현재 상태
 
-- 구조·스켈레톤·설계 중
-- 각 단계별 책임/자동완성/폴더/룰북 등 실험 진행
-- 향후 LangChain, Vector DB, 검색 QA와 직접 연계할 계획
+- ✅ **Infrastructure**: 폴더 구조, 자동화 스켈레톤 구축 완료
+- ✅ **Phase 1 & 2**: 포맷별 Deep Parsing 및 Segmentation 완료
+- ✅ **Normalization (Phase3.1)**: 포맷별 YAML 정책 기반의 Generic/Specific Cleaning 완료
+- 🚧 **Current Task**: **Phase 3.2 Structuring** (계층 구조화 및 페이지 매핑) 진입 중
 
 ---
 
