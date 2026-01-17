@@ -1,0 +1,26 @@
+header_regexes:
+  - "^\\s*저작권법\\s*$"
+
+footer_regexes:
+  - "^\\s*법제처\\s+\\d+\\s+국가법령정보센터\\s*$"
+
+header_max_lines: 3
+footer_max_lines: 3
+repeat_ratio: 0.8
+preserve_repeated: true
+header_tag: header
+footer_tag: footer
+sentence_end_patterns:
+  - '\\.$'
+  - '!$'
+  - '\\?$'
+  - '다\\.$'
+  - '요\\.$'
+heading_min_font_size: 14
+bold_font_patterns:
+  - '(?i)bold'
+  - '(?i)bd'
+italic_font_patterns:
+  - '(?i)italic'
+  - '(?i)it'
+underline_font_patterns: []

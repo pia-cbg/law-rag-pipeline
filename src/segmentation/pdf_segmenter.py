@@ -1,6 +1,6 @@
 import json
 import os
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 def words_to_lines(words, y_tol=2.0, gap_tol=3.5):
     """좌표 기반으로 줄 묶기 + 띄어쓰기 복원
@@ -22,6 +22,8 @@ def words_to_lines(words, y_tol=2.0, gap_tol=3.5):
         sort_xwords = sorted(xwords)
         line_text = ""
         prev_x1 = None
+        sizes = []
+        fontnames = []
         for x0, _, w in sort_xwords:
             # 띄어쓰기 필요시 공백 삽입
             if prev_x1 is not None:
@@ -30,12 +32,23 @@ def words_to_lines(words, y_tol=2.0, gap_tol=3.5):
                     line_text += " "
             line_text += w['text']
             prev_x1 = w['x1']
+            if 'size' in w:
+                sizes.append(w['size'])
+            if 'fontname' in w:
+                fontnames.append(w['fontname'])
         idxs = [i for _, i, _ in sort_xwords]
+        avg_size = sum(sizes) / len(sizes) if sizes else None
+        max_size = max(sizes) if sizes else None
+        font_counter = Counter(fontnames)
+        mode_font = font_counter.most_common(1)[0][0] if font_counter else None
         line_items.append({
             'y': y,
             'text': line_text,
             'word_indices': idxs,
-            'words': [w for _, _, w in sort_xwords]
+            'words': [w for _, _, w in sort_xwords],
+            'font_size_avg': avg_size,
+            'font_size_max': max_size,
+            'font_name_mode': mode_font,
         })
     return sorted(line_items, key=lambda x: x['y'])
 
@@ -69,6 +82,9 @@ def segment_pdf_parsed(parsed_pdf, filename=None, degraded_line_threshold=2, y_t
 
             # 모든 단어별 non_stroking_color 추출
             colors = [w.get("non_stroking_color") for w in line['words']]
+            font_size_avg = line.get("font_size_avg")
+            font_size_max = line.get("font_size_max")
+            font_name_mode = line.get("font_name_mode")
 
             segments.append({
                 "segment_id": segment_id,
@@ -77,6 +93,9 @@ def segment_pdf_parsed(parsed_pdf, filename=None, degraded_line_threshold=2, y_t
                 "text": text,
                 "source_word_indices": line['word_indices'],
                 "colors": colors,
+                "font_size_avg": font_size_avg,
+                "font_size_max": font_size_max,
+                "font_name_mode": font_name_mode,
                 "degraded": degraded,
                 "reason": reason
             })
