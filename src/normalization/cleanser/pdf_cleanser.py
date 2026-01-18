@@ -30,7 +30,7 @@ def load_rules(rule_file):
     except Exception:
         return default_rules
 
-def pdf_cleanser(text, doc_format):
+def _clean_pdf_text(text, doc_format):
     """
     [핵심 알고리즘: PDF 자가 판별 및 정제]
     1. doc_format이 'PDF'인지 확인한다.
@@ -63,6 +63,27 @@ def pdf_cleanser(text, doc_format):
             text = re.sub(pat, rep, text)
 
     return text
+
+
+def pdf_cleanser(payload, doc_format=None):
+    """
+    PDF 정제 엔트리포인트.
+    - payload가 dict(segments 포함)이면 텍스트 정제 + 컬러 정규화까지 수행합니다.
+    - payload가 str이면 텍스트만 정제합니다.
+    """
+    if isinstance(payload, dict):
+        fmt = (payload.get("format") or doc_format or "").upper()
+        if fmt != "PDF":
+            return payload
+        for seg in payload.get("segments", []):
+            text = seg.get("text")
+            if isinstance(text, str):
+                seg["text"] = _clean_pdf_text(text, "PDF")
+            _normalize_segment_colors(seg)
+        return payload
+    if isinstance(payload, str):
+        return _clean_pdf_text(payload, doc_format or "")
+    return payload
 
 
 def _channel_to_int(value):
@@ -109,8 +130,8 @@ def _normalize_segment_colors(seg):
 
 if __name__ == "__main__":
     # --- [PDF 단독 실험용 메인단] ---
-    INPUT_DIR = "/Users/cbg/github/law-doc-poc/data/segmentation/20260112_0442"
-    OUTPUT_DIR = "/Users/cbg/github/law-doc-poc/data/normalization/test_2"
+    INPUT_DIR = "/Users/cbg/github/law-doc-poc/data/segmentation/20260118_1305"
+    OUTPUT_DIR = "/Users/cbg/github/law-doc-poc/data/normalization/20260118_1305/01_Cleansed"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
     input_files = [f for f in os.listdir(INPUT_DIR) if f.lower().endswith(".json")]
@@ -138,7 +159,7 @@ if __name__ == "__main__":
             for seg in data.get("segments", []):
                 if "text" in seg and isinstance(seg["text"], str):
                     # PDF 전용 정제 수행
-                    seg["text"] = pdf_cleanser(seg["text"], fmt)
+                    seg["text"] = _clean_pdf_text(seg["text"], fmt)
                 _normalize_segment_colors(seg)
 
             # 3. 결과 저장 (PDF인 경우에만 저장 수행)

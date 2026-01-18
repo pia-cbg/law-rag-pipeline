@@ -30,6 +30,7 @@ law_rag/
 *.log
 *.tmp
 *.bak
+.codex/
 
 # 실험/아웃풋 파일
 experiments/logs/
@@ -42,34 +43,34 @@ data/**/*
 
 # 2. 특정 하위 디렉토리들을 '구조상' 열어줌
 !data/normalization/
-!data/normalization/20260112_0442/
-!data/normalization/20260112_0442/01_Cleansed
+!data/normalization/20260118_1305/
+!data/normalization/20260118_1305/01_Cleansed
+!data/normalization/20260118_1305/02_Structured
 !data/parsed_raw/
-!data/parsed_raw/20260112_0442/
+!data/parsed_raw/20260118_1305/
 !data/preprocess/
 !data/preprocess/raw_clean/
 !data/preprocess/failures/
 !data/preprocess/failures/extension/
 !data/segmentation/
-!data/segmentation/20260112_0442/
+!data/segmentation/20260118_1305/
 !data/raw/
 
 # 3. 실제 추적하고 싶은 파일들을 하나씩 지정
-!data/normalization/20260112_0442/01_Cleansed/전자상거래_등에서의_소비자보호에_관한_법률_법률__제21066호__20251001__hwp_results.json
-!data/normalization/20260112_0442/01_Cleansed/저작권법_법률__제20841호__20250926__pdf_results.json
+!data/normalization/20260118_1305/01_Cleansed/저작권법_법률__제20841호__20250926__pdf_results.json
+!data/normalization/20260118_1305/02_Structured/저작권법_법률__제20841호__20250926__pdf_structured.json
 
-!data/parsed_raw/20260112_0442/전자상거래_등에서의_소비자보호에_관한_법률_법률__제21066호__20251001__hwp_results.json
-!data/parsed_raw/20260112_0442/저작권법_법률__제20841호__20250926__pdf_results.json
+!data/parsed_raw/20260118_1305/저작권법_법률__제20841호__20250926__pdf_results.json
 
 !data/preprocess/raw_clean/전자상거래 등에서의 소비자보호에 관한 법률(법률)(제21066호)(20251001).hwp
 !data/preprocess/raw_clean/저작권법(법률)(제20841호)(20250926).pdf
 
-!data/segmentation/20260112_0442/전자상거래_등에서의_소비자보호에_관한_법률_법률__제21066호__20251001__hwp_results.json
-!data/segmentation/20260112_0442/저작권법_법률__제20841호__20250926__pdf_results.json
+!data/segmentation/20260118_1305/저작권법_법률__제20841호__20250926__pdf_results.json
 
 !data/raw/preprocess_test-2.wav
 !data/raw/preprocess_test-3.mp3
 !data/raw/preprocess_test.png
+
 
 # 대형 원본/민감/임베딩 벡터
 *.h5

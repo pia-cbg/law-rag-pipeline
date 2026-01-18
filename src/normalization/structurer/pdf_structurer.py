@@ -25,6 +25,73 @@ def _sanitize_doc_id(filename: Optional[str]) -> str:
     return "".join(ch if ch.isalnum() or ch in "-_" else "_" for ch in base)
 
 
+def _base_source_id(source_id: Optional[str]) -> Optional[str]:
+    if not source_id:
+        return None
+    # Strip split suffixes like -partXX or -partXX-listYY.
+    return re.sub(r"-part\\d+(?:-list\\d+)?$", "", source_id)
+
+
+def add_group_ids(structured: Dict[str, Any], cfg: Dict[str, Any]) -> Dict[str, Any]:
+    group_cfg = cfg.get("group_id", {}) if isinstance(cfg, dict) else {}
+    if not group_cfg or not group_cfg.get("enabled", True):
+        return structured
+    open_patterns = [re.compile(p) for p in group_cfg.get("open_patterns", [])]
+    close_patterns = [re.compile(p) for p in group_cfg.get("close_patterns", [])]
+    merge_cfg = group_cfg.get("merge_sentence", {}) if isinstance(group_cfg, dict) else {}
+    merge_enabled = bool(merge_cfg.get("enabled", True))
+    merge_sentence_end = [re.compile(p) for p in merge_cfg.get("sentence_end_patterns", [])]
+    merge_block_patterns = [re.compile(p) for p in merge_cfg.get("block_if_next_matches", [])]
+    merge_next_hangul = bool(merge_cfg.get("next_start_hangul", True))
+
+    chunks = structured.get("chunks", [])
+    for chunk in chunks:
+        meta = chunk.get("metadata", {})
+        base_id = None
+        source_segments = meta.get("source_segments")
+        if isinstance(source_segments, list) and source_segments:
+            base_id = _base_source_id(source_segments[0])
+        if not base_id:
+            base_id = _base_source_id(meta.get("source_segment_id"))
+        if not base_id:
+            base_id = chunk.get("chunk_id")
+        if base_id:
+            meta["group_id"] = base_id
+    # If a chunk ends with an open <... or [..., bind next chunk to same group_id.
+    for idx, chunk in enumerate(chunks[:-1]):
+        text = chunk.get("content", "")
+        if not isinstance(text, str):
+            continue
+        has_open = any(rx.search(text) for rx in open_patterns) if open_patterns else False
+        has_close = any(rx.search(text) for rx in close_patterns) if close_patterns else False
+        if not has_open or has_close:
+            continue
+        curr_gid = chunk.get("metadata", {}).get("group_id")
+        if not curr_gid:
+            continue
+        next_chunk = chunks[idx + 1]
+        next_meta = next_chunk.get("metadata", {})
+        next_meta["group_id"] = curr_gid
+    # Merge hard-wrapped lines that continue a sentence across segments.
+    if not merge_enabled:
+        return structured
+    for idx, chunk in enumerate(chunks[:-1]):
+        curr_text = chunk.get("content", "")
+        next_chunk = chunks[idx + 1]
+        next_text = next_chunk.get("content", "")
+        if not isinstance(curr_text, str) or not isinstance(next_text, str):
+            continue
+        if any(rx.search(curr_text.strip()) for rx in merge_sentence_end):
+            continue
+        if any(rx.match(next_text.strip()) for rx in merge_block_patterns):
+            continue
+        if merge_next_hangul and re.match(r"^[가-힣]", next_text.strip()):
+            curr_gid = chunk.get("metadata", {}).get("group_id")
+            if curr_gid:
+                next_chunk.get("metadata", {})["group_id"] = curr_gid
+    return structured
+
+
 def _drop_none(d: Dict[str, Any]) -> Dict[str, Any]:
     return {k: v for k, v in d.items() if v is not None}
 
@@ -108,27 +175,40 @@ def _is_sentence_end(text: str, end_patterns: List[re.Pattern]) -> bool:
     return False
 
 
-def _summarize_colors(colors: List[Any], accept_hex: bool, accept_rgb_list: bool, accept_numbers: bool) -> Dict[str, Any]:
-    has_color = False
-    dominant = None
-    for c in colors or []:
-        if c is None:
-            continue
-        if accept_hex and isinstance(c, str) and c.strip():
-            has_color = True
-            if dominant is None:
-                dominant = c
-            continue
-        if accept_rgb_list and isinstance(c, list) and any(v is not None for v in c):
-            has_color = True
-            if dominant is None:
-                dominant = c
-            continue
-        if accept_numbers and isinstance(c, (int, float)):
-            has_color = True
-            if dominant is None:
-                dominant = c
-    return {"has_color": has_color, "dominant_color": dominant}
+def _pick_span_color(
+    colors: List[Any],
+    accept_hex: bool,
+    accept_rgb_list: bool,
+    accept_numbers: bool,
+) -> Optional[Any]:
+    if not colors:
+        return None
+    if accept_hex:
+        hexes = [c for c in colors if isinstance(c, str) and c.strip()]
+        if "#0000FF" in [h.upper() for h in hexes]:
+            return "#0000FF"
+        if hexes:
+            return hexes[0]
+    if accept_rgb_list:
+        lists = [c for c in colors if isinstance(c, list) and any(v is not None for v in c)]
+        if lists:
+            return lists[0]
+    if accept_numbers:
+        nums = [c for c in colors if isinstance(c, (int, float))]
+        if nums:
+            return nums[0]
+    return None
+
+
+def _summarize_colors(span_colors: List[Any]) -> Dict[str, Any]:
+    valid = [c for c in span_colors if c is not None]
+    if not valid:
+        return {"has_color": False, "dominant_color": None}
+    counts: Dict[Any, int] = {}
+    for c in valid:
+        counts[c] = counts.get(c, 0) + 1
+    dominant = max(counts, key=counts.get)
+    return {"has_color": True, "dominant_color": dominant}
 
 
 def _merge_sentence_chunks(
@@ -190,36 +270,21 @@ def _merge_sentence_chunks(
         prev_text = text
 
         colors = seg.get("colors")
-        has_color = False
-        dominant = None
+        span_color = None
         if isinstance(colors, list):
-            for c in colors:
-                if c is None:
-                    continue
-                if accept_hex and isinstance(c, str) and c.strip():
-                    has_color = True
-                    if dominant is None:
-                        dominant = c
-                    continue
-                if accept_rgb_list and isinstance(c, list) and any(v is not None for v in c):
-                    has_color = True
-                    if dominant is None:
-                        dominant = c
-                    continue
-                if accept_numbers and isinstance(c, (int, float)):
-                    has_color = True
-                    if dominant is None:
-                        dominant = c
+            span_color = _pick_span_color(colors, accept_hex, accept_rgb_list, accept_numbers)
+        elif colors is not None:
+            span_color = _pick_span_color([colors], accept_hex, accept_rgb_list, accept_numbers)
         font_name = seg.get("font_name_mode")
         bold_flag = any(pat.search(font_name) for pat in bold_font_patterns) if font_name else False
         italic_flag = any(pat.search(font_name) for pat in italic_font_patterns) if font_name else False
         underline_flag = any(pat.search(font_name) for pat in underline_font_patterns) if font_name else False
 
-        if has_color or seg.get("font_size_avg") or font_name:
+        if span_color or seg.get("font_size_avg") or font_name:
             span_entry = {
                 "start": start,
                 "end": cursor,
-                "color": dominant if has_color else None,
+                "color": span_color,
                 "font_size_avg": seg.get("font_size_avg"),
                 "font_size_max": seg.get("font_size_max"),
                 "font_name": font_name,
@@ -242,17 +307,8 @@ def _merge_sentence_chunks(
     font_sizes = [s.get("font_size_max") for s in seg_buffer if isinstance(s.get("font_size_max"), (int, float))]
     chunk_max_font_size = max(font_sizes) if font_sizes else None
 
-    all_colors = []
-    for s in seg_buffer:
-        col = s.get("colors")
-        if col:
-            all_colors.extend(col if isinstance(col, list) else [col])
-    color_info = _summarize_colors(
-        all_colors,
-        accept_hex,
-        accept_rgb_list,
-        accept_numbers,
-    )
+    span_colors = [s.get("color") for s in style_spans if s.get("color") is not None]
+    color_info = _summarize_colors(span_colors)
 
     chunk_type = "heading" if heading_min_font_size and chunk_max_font_size and chunk_max_font_size >= heading_min_font_size else "body"
 
@@ -297,6 +353,8 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     footer_max_lines = int(cfg["footer_max_lines"])
     repeat_ratio = float(cfg["repeat_ratio"])
     preserve_repeated = bool(cfg["preserve_repeated"])
+    preserve_repeated_mode = str(cfg.get("preserve_repeated_mode", "all")).lower()
+    preserve_header_footer = str(cfg.get("preserve_header_footer", "all")).lower()
     header_tag = cfg["header_tag"]
     footer_tag = cfg["footer_tag"]
     heading_min_font_size = cfg.get("heading_min_font_size")
@@ -314,6 +372,14 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     heading_enabled = bool(heading_cfg.get("enabled", True))
     heading_patterns = [re.compile(p) for p in heading_cfg.get("patterns", [])]
     heading_inline_patterns = [re.compile(p) for p in heading_cfg.get("inline_patterns", [])]
+    list_cfg = cfg.get("list_split", {}) if isinstance(cfg, dict) else {}
+    list_enabled = bool(list_cfg.get("enabled", False))
+    list_inline_patterns = [re.compile(p) for p in list_cfg.get("inline_patterns", [])]
+    list_start_patterns = [re.compile(p) for p in list_cfg.get("start_patterns", [])]
+    article_list_cfg = cfg.get("article_list_split", {}) if isinstance(cfg, dict) else {}
+    article_list_enabled = bool(article_list_cfg.get("enabled", False))
+    article_list_patterns = [re.compile(p) for p in article_list_cfg.get("patterns", [])]
+    article_list_skip_angle = bool(article_list_cfg.get("skip_if_angle_brackets", False))
     section_break_regexes = heading_patterns or [re.compile(r"$^")]
     heading_inline_regexes = heading_inline_patterns or [re.compile(r"$^")]
     exception_cfg = cfg.get("exceptions", {}) if isinstance(cfg, dict) else {}
@@ -338,6 +404,8 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     flagged_header_footer = 0
 
     sentence_buffer: List[Dict[str, Any]] = []
+    preserved_headers = set()
+    preserved_footers = set()
 
     def split_by_heading(text: str, end_patterns: List[re.Pattern]) -> List[str]:
         if not text:
@@ -362,6 +430,44 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
             parts.append(text[start:end].strip())
         return [p for p in parts if p]
 
+    def split_by_list(text: str) -> List[str]:
+        if not text or not list_enabled or not list_inline_patterns:
+            return [text]
+        matches = []
+        for rx in list_inline_patterns:
+            matches.extend(list(rx.finditer(text)))
+        matches = sorted(matches, key=lambda m: m.start())
+        if len(matches) <= 1:
+            return [text]
+        parts = []
+        prev_end = 0
+        for i, m in enumerate(matches):
+            start = m.start()
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+            if start > prev_end:
+                prev = text[prev_end:start].strip()
+                if prev:
+                    parts.append(prev)
+            parts.append(text[start:end].strip())
+            prev_end = end
+        return [p for p in parts if p]
+
+    def split_article_list(text: str) -> List[str]:
+        if not text or not article_list_enabled or not article_list_patterns:
+            return [text]
+        if not text.startswith("제"):
+            return [text]
+        if article_list_skip_angle and "<" in text:
+            return [text]
+        for rx in article_list_patterns:
+            m = rx.search(text)
+            if m and m.start() > 0:
+                head = text[: m.start()].rstrip()
+                tail = text[m.start():].lstrip()
+                if head and tail:
+                    return [head, tail]
+        return [text]
+
     for page_num, segs in sorted(pages.items()):
         for idx_within_page, seg in enumerate(segs):
             raw_text = seg.get("text", "")
@@ -382,6 +488,19 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
             if is_hf:
                 flagged_header_footer += 1
                 if preserve_repeated:
+                    if preserve_header_footer == "header_only" and is_footer_zone:
+                        continue
+                    if preserve_header_footer == "footer_only" and is_header_zone:
+                        continue
+                    if preserve_repeated_mode == "first":
+                        if is_header_zone and text in preserved_headers:
+                            continue
+                        if is_footer_zone and text in preserved_footers:
+                            continue
+                        if is_header_zone:
+                            preserved_headers.add(text)
+                        if is_footer_zone:
+                            preserved_footers.add(text)
                     chunks.append(
                         {
                             "chunk_id": seg.get("segment_id") or f"{doc_id}-p{page_num:02d}-seg{idx_within_page:04d}",
@@ -410,12 +529,52 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                 heading_disabled = True
 
             for part_idx, part_text in enumerate(split_by_heading(text, sentence_end_regexes)):
-                part_seg = seg if part_idx == 0 else {**seg, "segment_id": f"{seg.get('segment_id')}-part{part_idx:02d}"}
-                part_seg["text"] = part_text
+                article_parts = split_article_list(part_text)
+                list_parts = []
+                for ap in article_parts:
+                    list_parts.extend(split_by_list(ap))
+                for list_idx, list_text in enumerate(list_parts):
+                    part_seg = seg if (part_idx == 0 and list_idx == 0) else {
+                        **seg,
+                        "segment_id": f"{seg.get('segment_id')}-part{part_idx:02d}-list{list_idx:02d}",
+                    }
+                    part_seg["text"] = list_text
 
-                # If a new section heading starts, flush current buffer first.
-                if heading_enabled and not heading_disabled and sentence_buffer:
-                    if any(rx.match(part_text) for rx in section_break_regexes):
+                    if list_enabled and list_start_patterns and sentence_buffer:
+                        if any(rx.match(list_text) for rx in list_start_patterns):
+                            _merge_sentence_chunks(
+                                doc_id,
+                                filename,
+                                fmt,
+                                sentence_buffer,
+                                chunks,
+                                heading_min_font_size,
+                                bold_font_patterns,
+                                italic_font_patterns,
+                                underline_font_patterns,
+                                merge_space_cfg,
+                                color_cfg,
+                            )
+
+                    # If a new section heading starts, flush current buffer first.
+                    if heading_enabled and not heading_disabled and sentence_buffer:
+                        if any(rx.match(list_text) for rx in section_break_regexes):
+                            _merge_sentence_chunks(
+                                doc_id,
+                                filename,
+                                fmt,
+                                sentence_buffer,
+                                chunks,
+                                heading_min_font_size,
+                                bold_font_patterns,
+                                italic_font_patterns,
+                                underline_font_patterns,
+                                merge_space_cfg,
+                                color_cfg,
+                            )
+
+                    sentence_buffer.append(part_seg)
+                    if _is_sentence_end(list_text, sentence_end_regexes):
                         _merge_sentence_chunks(
                             doc_id,
                             filename,
@@ -429,22 +588,6 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                             merge_space_cfg,
                             color_cfg,
                         )
-
-                sentence_buffer.append(part_seg)
-                if _is_sentence_end(part_text, sentence_end_regexes):
-                    _merge_sentence_chunks(
-                        doc_id,
-                        filename,
-                        fmt,
-                        sentence_buffer,
-                        chunks,
-                        heading_min_font_size,
-                        bold_font_patterns,
-                        italic_font_patterns,
-                        underline_font_patterns,
-                        merge_space_cfg,
-                        color_cfg,
-                    )
 
     _merge_sentence_chunks(
         doc_id,
@@ -460,7 +603,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
         color_cfg,
     )
 
-    return {
+    structured = {
         "doc_id": doc_id,
         "filename": filename,
         "format": fmt,
@@ -475,3 +618,24 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
             "repeated_footers": list(repeated_footers),
         },
     }
+    return add_group_ids(structured, cfg)
+
+
+if __name__ == "__main__":
+    import json
+    INPUT_PATH = "/Users/cbg/github/law-doc-poc/data/normalization/20260118_1305/01_Cleansed/저작권법_법률__제20841호__20250926__pdf_results.json"
+    OUTPUT_PATH = "/Users/cbg/github/law-doc-poc/data/normalization/20260118_1305/02_Structured/저작권법_법률__제20841호__20250926__pdf_structured.json"
+
+    with open(INPUT_PATH, "r", encoding="utf-8") as f:
+        seg_json = json.load(f)
+
+    if seg_json.get("format") != "PDF":
+        raise SystemExit(f"Unsupported format: {seg_json.get('format')}")
+
+    structured = structure_pdf(seg_json)
+
+    Path(OUTPUT_PATH).parent.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(structured, f, ensure_ascii=False, indent=2)
+
+    print(f"[OK] Structured output saved: {OUTPUT_PATH}")

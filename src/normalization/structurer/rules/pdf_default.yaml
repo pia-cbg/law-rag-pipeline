@@ -8,6 +8,8 @@ header_max_lines: 3
 footer_max_lines: 3
 repeat_ratio: 0.8
 preserve_repeated: true
+preserve_repeated_mode: first
+preserve_header_footer: header_only
 header_tag: header
 footer_tag: footer
 sentence_end_patterns:
@@ -19,9 +21,29 @@ sentence_end_patterns:
 heading_split:
   enabled: true
   patterns:
+    - '^제\d+장\s+.*$'
+    - '^제\d+절\s+.*$'
+    - '^제\d+관\s+.*$'
     - '^제\d+조(의\d+)?[(]'
   inline_patterns:
+    - '제\d+장\s+'
+    - '제\d+절\s+'
+    - '제\d+관\s+'
     - '제\d+조(의\d+)?[(]'
+list_split:
+  enabled: true
+  inline_patterns:
+    - '(?:^|\s)[가-힣]\.(?=\s*[가-힣])'
+    - '[①-⑳]'
+  start_patterns:
+    - '^\d{1,3}(?:의\d{1,3})?\.'
+    - '^[가-힣]\.'
+    - '^[①-⑳]'
+article_list_split:
+  enabled: true
+  patterns:
+    - '\s(?:\d{1,3}(?:의\d{1,3})?\.(?=\s*[^\d])|[①-⑳])'
+  skip_if_angle_brackets: true
 exceptions:
   disable_heading_after:
     - '^제11장\s+벌칙'
@@ -43,6 +65,27 @@ color_handling:
   accept_hex: true
   accept_rgb_list: true
   accept_numbers: false
+group_id:
+  enabled: true
+  open_patterns:
+    - "<"
+    - "\\["
+  close_patterns:
+    - ">"
+    - "\\]"
+  merge_sentence:
+    enabled: true
+    sentence_end_patterns:
+      - '\.$'
+      - '!$'
+      - '\?$'
+      - '다\.$'
+      - '요\.$'
+    block_if_next_matches:
+      - '^(?:제|\d{1,3}(?:의\d{1,3})?\.)'
+      - '^[가-힣]\.'
+      - '^[①-⑳]'
+    next_start_hangul: true
 heading_min_font_size: 14
 bold_font_patterns:
   - '(?i)bold'
