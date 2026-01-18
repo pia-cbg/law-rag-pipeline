@@ -64,6 +64,49 @@ def pdf_cleanser(text, doc_format):
 
     return text
 
+
+def _channel_to_int(value):
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        value = int(value)
+    if isinstance(value, (int, float)):
+        if 0 <= value <= 1:
+            value = round(value * 255)
+        else:
+            value = round(value)
+        return max(0, min(255, int(value)))
+    return None
+
+
+def _color_to_hex(color):
+    if color is None:
+        return None
+    if isinstance(color, (list, tuple)):
+        if len(color) == 1:
+            r = g = b = _channel_to_int(color[0])
+        elif len(color) >= 3:
+            r = _channel_to_int(color[0])
+            g = _channel_to_int(color[1])
+            b = _channel_to_int(color[2])
+        else:
+            return None
+    else:
+        r = g = b = _channel_to_int(color)
+    if r is None or g is None or b is None:
+        return None
+    return f"#{r:02X}{g:02X}{b:02X}"
+
+
+def _normalize_segment_colors(seg):
+    if "colors" not in seg:
+        return
+    colors = seg.get("colors")
+    if isinstance(colors, list):
+        seg["colors"] = [_color_to_hex(c) for c in colors]
+    else:
+        seg["colors"] = _color_to_hex(colors)
+
 if __name__ == "__main__":
     # --- [PDF 단독 실험용 메인단] ---
     INPUT_DIR = "/Users/cbg/github/law-doc-poc/data/segmentation/20260112_0442"
@@ -96,6 +139,7 @@ if __name__ == "__main__":
                 if "text" in seg and isinstance(seg["text"], str):
                     # PDF 전용 정제 수행
                     seg["text"] = pdf_cleanser(seg["text"], fmt)
+                _normalize_segment_colors(seg)
 
             # 3. 결과 저장 (PDF인 경우에만 저장 수행)
             with open(fout_path, "w", encoding="utf-8") as f:

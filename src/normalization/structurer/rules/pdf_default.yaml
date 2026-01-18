@@ -11,11 +11,38 @@ preserve_repeated: true
 header_tag: header
 footer_tag: footer
 sentence_end_patterns:
-  - '\\.$'
+  - '\.$'
   - '!$'
-  - '\\?$'
-  - '다\\.$'
-  - '요\\.$'
+  - '\?$'
+  - '다\.$'
+  - '요\.$'
+heading_split:
+  enabled: true
+  patterns:
+    - '^제\d+조(의\d+)?[(]'
+  inline_patterns:
+    - '제\d+조(의\d+)?[(]'
+exceptions:
+  disable_heading_after:
+    - '^제11장\s+벌칙'
+merge_space:
+  enabled: true
+  join_single_syllable: true
+  keep_space_tokens:
+    - '및'
+    - '과'
+    - '와'
+    - '또'
+    - '또는'
+    - '혹은'
+  no_join_prefixes:
+    - '제'
+  require_prev_hangul: true
+  require_next_hangul: true
+color_handling:
+  accept_hex: true
+  accept_rgb_list: true
+  accept_numbers: false
 heading_min_font_size: 14
 bold_font_patterns:
   - '(?i)bold'

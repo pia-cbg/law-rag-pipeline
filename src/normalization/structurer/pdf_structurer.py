@@ -108,13 +108,23 @@ def _is_sentence_end(text: str, end_patterns: List[re.Pattern]) -> bool:
     return False
 
 
-def _summarize_colors(colors: List[Any]) -> Dict[str, Any]:
+def _summarize_colors(colors: List[Any], accept_hex: bool, accept_rgb_list: bool, accept_numbers: bool) -> Dict[str, Any]:
     has_color = False
     dominant = None
     for c in colors or []:
         if c is None:
             continue
-        if isinstance(c, list) and any(v is not None for v in c):
+        if accept_hex and isinstance(c, str) and c.strip():
+            has_color = True
+            if dominant is None:
+                dominant = c
+            continue
+        if accept_rgb_list and isinstance(c, list) and any(v is not None for v in c):
+            has_color = True
+            if dominant is None:
+                dominant = c
+            continue
+        if accept_numbers and isinstance(c, (int, float)):
             has_color = True
             if dominant is None:
                 dominant = c
@@ -131,12 +141,23 @@ def _merge_sentence_chunks(
     bold_font_patterns: List[re.Pattern],
     italic_font_patterns: List[re.Pattern],
     underline_font_patterns: List[re.Pattern],
+    merge_space_cfg: Dict[str, Any],
+    color_cfg: Dict[str, Any],
 ) -> None:
     if not seg_buffer:
         return
     pieces = []
     style_spans: List[Dict[str, Any]] = []
     cursor = 0
+    prev_text = None
+    keep_space_tokens = set(merge_space_cfg.get("keep_space_tokens", []))
+    no_join_prefixes = tuple(merge_space_cfg.get("no_join_prefixes", []))
+    join_single_syllable = bool(merge_space_cfg.get("join_single_syllable", True))
+    require_prev_hangul = bool(merge_space_cfg.get("require_prev_hangul", True))
+    require_next_hangul = bool(merge_space_cfg.get("require_next_hangul", True))
+    accept_hex = bool(color_cfg.get("accept_hex", True))
+    accept_rgb_list = bool(color_cfg.get("accept_rgb_list", True))
+    accept_numbers = bool(color_cfg.get("accept_numbers", False))
 
     for seg in seg_buffer:
         raw_text = seg.get("text", "")
@@ -144,11 +165,29 @@ def _merge_sentence_chunks(
         if not text:
             continue
         if pieces:
-            pieces.append(" ")
-            cursor += 1
+            # Avoid inserting space for mid-word Korean splits, but keep it for normal word boundaries.
+            last_token = prev_text.split()[-1] if prev_text else ""
+            next_token = text.split()[0] if text else ""
+            prev_hangul = bool(re.match(r"[가-힣]$", last_token)) if last_token else False
+            next_hangul = bool(re.match(r"^[가-힣]", next_token)) if next_token else False
+            can_join = bool(merge_space_cfg.get("enabled", True))
+            if require_prev_hangul:
+                can_join = can_join and prev_hangul
+            if require_next_hangul:
+                can_join = can_join and next_hangul
+            if no_join_prefixes and next_token.startswith(no_join_prefixes):
+                can_join = False
+            if join_single_syllable and len(last_token) != 1:
+                can_join = False
+            if last_token in keep_space_tokens:
+                can_join = False
+            if not can_join:
+                pieces.append(" ")
+                cursor += 1
         start = cursor
         pieces.append(text)
         cursor += len(text)
+        prev_text = text
 
         colors = seg.get("colors")
         has_color = False
@@ -157,7 +196,17 @@ def _merge_sentence_chunks(
             for c in colors:
                 if c is None:
                     continue
-                if isinstance(c, list) and any(v is not None for v in c):
+                if accept_hex and isinstance(c, str) and c.strip():
+                    has_color = True
+                    if dominant is None:
+                        dominant = c
+                    continue
+                if accept_rgb_list and isinstance(c, list) and any(v is not None for v in c):
+                    has_color = True
+                    if dominant is None:
+                        dominant = c
+                    continue
+                if accept_numbers and isinstance(c, (int, float)):
                     has_color = True
                     if dominant is None:
                         dominant = c
@@ -198,7 +247,12 @@ def _merge_sentence_chunks(
         col = s.get("colors")
         if col:
             all_colors.extend(col if isinstance(col, list) else [col])
-    color_info = _summarize_colors(all_colors)
+    color_info = _summarize_colors(
+        all_colors,
+        accept_hex,
+        accept_rgb_list,
+        accept_numbers,
+    )
 
     chunk_type = "heading" if heading_min_font_size and chunk_max_font_size and chunk_max_font_size >= heading_min_font_size else "body"
 
@@ -251,9 +305,20 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     bold_font_patterns = [re.compile(pat) for pat in cfg.get("bold_font_patterns", [])]
     italic_font_patterns = [re.compile(pat) for pat in cfg.get("italic_font_patterns", [])]
     underline_font_patterns = [re.compile(pat) for pat in cfg.get("underline_font_patterns", [])]
+    merge_space_cfg = cfg.get("merge_space", {}) if isinstance(cfg, dict) else {}
+    color_cfg = cfg.get("color_handling", {}) if isinstance(cfg, dict) else {}
 
     header_regexes = [re.compile(pat) for pat in cfg["header_regexes"]]
     footer_regexes = [re.compile(pat) for pat in cfg["footer_regexes"]]
+    heading_cfg = cfg.get("heading_split", {}) if isinstance(cfg, dict) else {}
+    heading_enabled = bool(heading_cfg.get("enabled", True))
+    heading_patterns = [re.compile(p) for p in heading_cfg.get("patterns", [])]
+    heading_inline_patterns = [re.compile(p) for p in heading_cfg.get("inline_patterns", [])]
+    section_break_regexes = heading_patterns or [re.compile(r"$^")]
+    heading_inline_regexes = heading_inline_patterns or [re.compile(r"$^")]
+    exception_cfg = cfg.get("exceptions", {}) if isinstance(cfg, dict) else {}
+    disable_heading_after = [re.compile(p) for p in exception_cfg.get("disable_heading_after", [])]
+    heading_disabled = False
 
     segments: List[Dict[str, Any]] = seg_json.get("segments", []) or []
     chunks: List[Dict[str, Any]] = []
@@ -273,6 +338,29 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     flagged_header_footer = 0
 
     sentence_buffer: List[Dict[str, Any]] = []
+
+    def split_by_heading(text: str, end_patterns: List[re.Pattern]) -> List[str]:
+        if not text:
+            return []
+        if not heading_enabled or heading_disabled:
+            return [text]
+        matches = []
+        for rx in heading_inline_regexes:
+            matches.extend(list(rx.finditer(text)))
+        matches = sorted(matches, key=lambda m: m.start())
+        if len(matches) <= 1:
+            return [text]
+        parts = []
+        for i, m in enumerate(matches):
+            start = m.start()
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+            if start > 0:
+                prev = text[:start].rstrip()
+                if prev and not _is_sentence_end(prev, end_patterns):
+                    continue
+                parts.append(prev.strip())
+            parts.append(text[start:end].strip())
+        return [p for p in parts if p]
 
     for page_num, segs in sorted(pages.items()):
         for idx_within_page, seg in enumerate(segs):
@@ -318,19 +406,45 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
             if seg.get("degraded"):
                 degraded += 1
 
-            sentence_buffer.append(seg)
-            if _is_sentence_end(text, sentence_end_regexes):
-                _merge_sentence_chunks(
-                    doc_id,
-                    filename,
-                    fmt,
-                    sentence_buffer,
-                    chunks,
-                    heading_min_font_size,
-                    bold_font_patterns,
-                    italic_font_patterns,
-                    underline_font_patterns,
-                )
+            if any(rx.match(text) for rx in disable_heading_after):
+                heading_disabled = True
+
+            for part_idx, part_text in enumerate(split_by_heading(text, sentence_end_regexes)):
+                part_seg = seg if part_idx == 0 else {**seg, "segment_id": f"{seg.get('segment_id')}-part{part_idx:02d}"}
+                part_seg["text"] = part_text
+
+                # If a new section heading starts, flush current buffer first.
+                if heading_enabled and not heading_disabled and sentence_buffer:
+                    if any(rx.match(part_text) for rx in section_break_regexes):
+                        _merge_sentence_chunks(
+                            doc_id,
+                            filename,
+                            fmt,
+                            sentence_buffer,
+                            chunks,
+                            heading_min_font_size,
+                            bold_font_patterns,
+                            italic_font_patterns,
+                            underline_font_patterns,
+                            merge_space_cfg,
+                            color_cfg,
+                        )
+
+                sentence_buffer.append(part_seg)
+                if _is_sentence_end(part_text, sentence_end_regexes):
+                    _merge_sentence_chunks(
+                        doc_id,
+                        filename,
+                        fmt,
+                        sentence_buffer,
+                        chunks,
+                        heading_min_font_size,
+                        bold_font_patterns,
+                        italic_font_patterns,
+                        underline_font_patterns,
+                        merge_space_cfg,
+                        color_cfg,
+                    )
 
     _merge_sentence_chunks(
         doc_id,
@@ -342,6 +456,8 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
         bold_font_patterns,
         italic_font_patterns,
         underline_font_patterns,
+        merge_space_cfg,
+        color_cfg,
     )
 
     return {
