@@ -7,6 +7,7 @@ Segmentation 결과(PDF)를 chunk 단위로 표준화합니다.
 - 딥파싱 저수준 필드(word_indices 등)는 제거하고, 스타일 정보는 요약형 메타/스팬으로 남깁니다.
 """
 from typing import Any, Dict, List, Optional, Tuple
+from datetime import datetime
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -23,6 +24,34 @@ def _sanitize_doc_id(filename: Optional[str]) -> str:
         return "document"
     base = filename.rsplit(".", 1)[0]
     return "".join(ch if ch.isalnum() or ch in "-_" else "_" for ch in base)
+
+
+def _make_session_id() -> str:
+    return datetime.now().strftime("%Y%m%d_%H%M")
+
+
+class _StyleSpanLogger:
+    def __init__(self, session_id: str, filename: Optional[str]) -> None:
+        self._session_id = session_id
+        self._filename = filename or "unknown"
+        self._path = Path("Log") / "structurer" / session_id / "style_span_warnings.log"
+        self._file = None
+
+    def log(self, issue: str, source_ids: List[str], detail: str) -> None:
+        if self._file is None:
+            self._path.parent.mkdir(parents=True, exist_ok=True)
+            self._file = self._path.open("a", encoding="utf-8")
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        line = ",".join(source_ids) if source_ids else "-"
+        self._file.write(
+            f"[{ts}] file={self._filename} line={line} issue={issue} detail={detail}\n"
+        )
+        self._file.flush()
+
+    def close(self) -> None:
+        if self._file is not None:
+            self._file.close()
+            self._file = None
 
 
 def _base_source_id(source_id: Optional[str]) -> Optional[str]:
@@ -245,18 +274,25 @@ def _pick_span_color(
         return None
     if accept_hex:
         hexes = [c for c in colors if isinstance(c, str) and c.strip()]
-        if "#0000FF" in [h.upper() for h in hexes]:
-            return "#0000FF"
-        if hexes:
+        unique_hexes = {h.strip().upper() for h in hexes}
+        if len(unique_hexes) == 1:
             return hexes[0]
+        if len(unique_hexes) > 1:
+            return None
     if accept_rgb_list:
         lists = [c for c in colors if isinstance(c, list) and any(v is not None for v in c)]
-        if lists:
+        unique_lists = {tuple(c) for c in lists}
+        if len(unique_lists) == 1:
             return lists[0]
+        if len(unique_lists) > 1:
+            return None
     if accept_numbers:
         nums = [c for c in colors if isinstance(c, (int, float))]
-        if nums:
+        unique_nums = set(nums)
+        if len(unique_nums) == 1:
             return nums[0]
+        if len(unique_nums) > 1:
+            return None
     return None
 
 
@@ -370,6 +406,43 @@ def _token_color_spans(
     return spans
 
 
+def _word_color_spans(
+    text: str,
+    colors: List[Any],
+    start: int,
+    accept_hex: bool,
+    accept_rgb_list: bool,
+    accept_numbers: bool,
+) -> Optional[List[Tuple[int, int, Optional[Any]]]]:
+    word_regex = re.compile(r"\\S+")
+    tokens = _iter_token_spans(text, word_regex, None)
+    if not tokens or len(tokens) != len(colors):
+        return None
+    spans: List[Tuple[int, int, Optional[Any]]] = []
+    run_start = None
+    run_end = None
+    run_color = None
+    for (tok_start, tok_end), raw_color in zip(tokens, colors):
+        token_color = _pick_span_color([raw_color], accept_hex, accept_rgb_list, accept_numbers)
+        token_start = start + tok_start
+        token_end = start + tok_end
+        if run_start is None:
+            run_start = token_start
+            run_end = token_end
+            run_color = token_color
+            continue
+        if token_color == run_color:
+            run_end = token_end
+            continue
+        spans.append((run_start, run_end, run_color))
+        run_start = token_start
+        run_end = token_end
+        run_color = token_color
+    if run_start is not None:
+        spans.append((run_start, run_end, run_color))
+    return spans
+
+
 def _summarize_colors(span_colors: List[Any]) -> Dict[str, Any]:
     valid = [c for c in span_colors if c is not None]
     if not valid:
@@ -395,6 +468,7 @@ def _merge_sentence_chunks(
     color_cfg: Dict[str, Any],
     token_regex: re.Pattern,
     token_break_chars: Optional[set],
+    logger: Optional[_StyleSpanLogger],
 ) -> None:
     if not seg_buffer:
         return
@@ -453,6 +527,8 @@ def _merge_sentence_chunks(
 
         token_spans = None
         if isinstance(colors, list):
+            tokens = _iter_token_spans(text, token_regex, token_break_chars)
+            base_tokens = _iter_token_spans(text, token_regex, None)
             token_spans = _token_color_spans(
                 text,
                 colors,
@@ -463,6 +539,22 @@ def _merge_sentence_chunks(
                 token_regex,
                 token_break_chars,
             )
+            if token_spans is None:
+                token_spans = _word_color_spans(
+                    text,
+                    colors,
+                    start,
+                    accept_hex,
+                    accept_rgb_list,
+                    accept_numbers,
+                )
+            if token_spans is None and logger:
+                source_id = seg.get("segment_id")
+                logger.log(
+                    "style_span_map_failed",
+                    [source_id] if source_id else [],
+                    f"colors={len(colors)} tokens={len(tokens)} base_tokens={len(base_tokens)} text_len={len(text)}",
+                )
 
         if token_spans:
             for span_start, span_end, span_color in token_spans:
@@ -547,6 +639,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     filename = seg_json.get("filename")
     fmt = seg_json.get("format", "PDF")
     doc_id = _sanitize_doc_id(filename)
+    logger = _StyleSpanLogger(_make_session_id(), filename)
 
     cfg = _load_rules()
     header_max_lines = int(cfg["header_max_lines"])
@@ -792,6 +885,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                                 color_cfg,
                                 token_regex,
                                 token_break_chars,
+                                logger,
                             )
 
                     # If a new section heading starts, flush current buffer first.
@@ -811,6 +905,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                                 color_cfg,
                                 token_regex,
                                 token_break_chars,
+                                logger,
                             )
 
                     sentence_buffer.append(part_seg)
@@ -829,6 +924,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                             color_cfg,
                             token_regex,
                             token_break_chars,
+                            logger,
                         )
 
     _merge_sentence_chunks(
@@ -845,6 +941,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
         color_cfg,
         token_regex,
         token_break_chars,
+        logger,
     )
 
     structured = {
@@ -862,7 +959,9 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
             "repeated_footers": list(repeated_footers),
         },
     }
-    return add_group_ids(structured, cfg)
+    structured = add_group_ids(structured, cfg)
+    logger.close()
+    return structured
 
 
 if __name__ == "__main__":

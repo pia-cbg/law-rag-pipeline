@@ -32,6 +32,14 @@ law_rag/
 *.bak
 .codex/
 
+
+# Log 폴더는 추적, 내용은 기본 무시
+!Log/
+Log/**/*
+# structurer 메모만 예외로 추적
+!Log/structurer/
+!Log/structurer/STYLE_SPAN_NOTES.md
+
 # 실험/아웃풋 파일
 experiments/logs/
 experiments/results/
