@@ -38,11 +38,16 @@ def add_group_ids(structured: Dict[str, Any], cfg: Dict[str, Any]) -> Dict[str, 
         return structured
     open_patterns = [re.compile(p) for p in group_cfg.get("open_patterns", [])]
     close_patterns = [re.compile(p) for p in group_cfg.get("close_patterns", [])]
+    attach_next_patterns = [re.compile(p) for p in group_cfg.get("attach_next_if_matches", [])]
     merge_cfg = group_cfg.get("merge_sentence", {}) if isinstance(group_cfg, dict) else {}
     merge_enabled = bool(merge_cfg.get("enabled", True))
     merge_sentence_end = [re.compile(p) for p in merge_cfg.get("sentence_end_patterns", [])]
+    merge_sentence_exceptions = _compile_sentence_end_exceptions(merge_cfg.get("sentence_end_exceptions", []))
     merge_block_patterns = [re.compile(p) for p in merge_cfg.get("block_if_next_matches", [])]
+    merge_allow_next_patterns = [re.compile(p) for p in merge_cfg.get("allow_if_next_matches", [])]
     merge_next_hangul = bool(merge_cfg.get("next_start_hangul", True))
+    merge_next_regex = merge_cfg.get("next_start_regex")
+    merge_next_rx = re.compile(merge_next_regex) if merge_next_regex else None
 
     chunks = structured.get("chunks", [])
     for chunk in chunks:
@@ -72,6 +77,18 @@ def add_group_ids(structured: Dict[str, Any], cfg: Dict[str, Any]) -> Dict[str, 
         next_chunk = chunks[idx + 1]
         next_meta = next_chunk.get("metadata", {})
         next_meta["group_id"] = curr_gid
+    # Attach trailing annotation chunks like "[본조신설 ...]" to the previous group.
+    if attach_next_patterns:
+        for idx, chunk in enumerate(chunks[:-1]):
+            curr_gid = chunk.get("metadata", {}).get("group_id")
+            if not curr_gid:
+                continue
+            next_chunk = chunks[idx + 1]
+            next_text = next_chunk.get("content", "")
+            if not isinstance(next_text, str):
+                continue
+            if any(rx.match(next_text.strip()) for rx in attach_next_patterns):
+                next_chunk.get("metadata", {})["group_id"] = curr_gid
     # Merge hard-wrapped lines that continue a sentence across segments.
     if not merge_enabled:
         return structured
@@ -81,11 +98,17 @@ def add_group_ids(structured: Dict[str, Any], cfg: Dict[str, Any]) -> Dict[str, 
         next_text = next_chunk.get("content", "")
         if not isinstance(curr_text, str) or not isinstance(next_text, str):
             continue
-        if any(rx.search(curr_text.strip()) for rx in merge_sentence_end):
+        if _is_sentence_end_with_exceptions(
+            curr_text.strip(),
+            merge_sentence_end,
+            merge_sentence_exceptions,
+            next_text.strip() if isinstance(next_text, str) else None,
+        ):
             continue
         if any(rx.match(next_text.strip()) for rx in merge_block_patterns):
-            continue
-        if merge_next_hangul and re.match(r"^[가-힣]", next_text.strip()):
+            if not any(rx.match(next_text.strip()) for rx in merge_allow_next_patterns):
+                continue
+        if merge_next_hangul and merge_next_rx and merge_next_rx.match(next_text.strip()):
             curr_gid = chunk.get("metadata", {}).get("group_id")
             if curr_gid:
                 next_chunk.get("metadata", {})["group_id"] = curr_gid
@@ -175,6 +198,43 @@ def _is_sentence_end(text: str, end_patterns: List[re.Pattern]) -> bool:
     return False
 
 
+def _compile_sentence_end_exceptions(exceptions_cfg: Any) -> List[Dict[str, Any]]:
+    if not isinstance(exceptions_cfg, list):
+        return []
+    compiled = []
+    for item in exceptions_cfg:
+        if not isinstance(item, dict):
+            continue
+        end_pat = item.get("end_pattern")
+        prefixes = item.get("next_prefixes", [])
+        if not end_pat or not prefixes:
+            continue
+        compiled.append(
+            {
+                "end_pattern": re.compile(end_pat),
+                "next_prefixes": [re.compile(p) for p in prefixes],
+            }
+        )
+    return compiled
+
+
+def _is_sentence_end_with_exceptions(
+    text: str,
+    end_patterns: List[re.Pattern],
+    exceptions: List[Dict[str, Any]],
+    next_text: Optional[str],
+) -> bool:
+    if not _is_sentence_end(text, end_patterns):
+        return False
+    if not exceptions or not next_text:
+        return True
+    for item in exceptions:
+        if item["end_pattern"].search(text):
+            if any(rx.match(next_text) for rx in item["next_prefixes"]):
+                return False
+    return True
+
+
 def _pick_span_color(
     colors: List[Any],
     accept_hex: bool,
@@ -200,6 +260,76 @@ def _pick_span_color(
     return None
 
 
+def _normalize_break_chars(value: Any) -> Optional[set]:
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return set(value)
+    if isinstance(value, list):
+        chars = []
+        for item in value:
+            if isinstance(item, str):
+                chars.append(item)
+        return set("".join(chars)) if chars else None
+    return None
+
+
+def _iter_token_spans(
+    text: str,
+    token_regex: re.Pattern,
+    break_chars: Optional[set],
+) -> List[Tuple[int, int]]:
+    spans: List[Tuple[int, int]] = []
+    for match in token_regex.finditer(text):
+        token = match.group(0)
+        base = match.start()
+        sub_start = 0
+        for idx, ch in enumerate(token):
+            if break_chars and ch in break_chars and idx > sub_start:
+                spans.append((base + sub_start, base + idx))
+                sub_start = idx
+        spans.append((base + sub_start, base + len(token)))
+    return spans
+
+
+def _token_color_spans(
+    text: str,
+    colors: List[Any],
+    start: int,
+    accept_hex: bool,
+    accept_rgb_list: bool,
+    accept_numbers: bool,
+    token_regex: re.Pattern,
+    break_chars: Optional[set],
+) -> Optional[List[Tuple[int, int, Optional[Any]]]]:
+    tokens = _iter_token_spans(text, token_regex, break_chars)
+    if not tokens or len(tokens) != len(colors):
+        return None
+    spans: List[Tuple[int, int, Optional[Any]]] = []
+    run_start = None
+    run_end = None
+    run_color = None
+    for (tok_start, tok_end), raw_color in zip(tokens, colors):
+        token_color = _pick_span_color([raw_color], accept_hex, accept_rgb_list, accept_numbers)
+        token_start = start + tok_start
+        token_end = start + tok_end
+        if run_start is None:
+            run_start = token_start
+            run_end = token_end
+            run_color = token_color
+            continue
+        if token_color == run_color:
+            run_end = token_end
+            continue
+        spans.append((run_start, run_end, run_color))
+        run_start = token_start
+        run_end = token_end
+        run_color = token_color
+    if run_start is not None:
+        spans.append((run_start, run_end, run_color))
+    return spans
+
+
 def _summarize_colors(span_colors: List[Any]) -> Dict[str, Any]:
     valid = [c for c in span_colors if c is not None]
     if not valid:
@@ -223,6 +353,8 @@ def _merge_sentence_chunks(
     underline_font_patterns: List[re.Pattern],
     merge_space_cfg: Dict[str, Any],
     color_cfg: Dict[str, Any],
+    token_regex: re.Pattern,
+    token_break_chars: Optional[set],
 ) -> None:
     if not seg_buffer:
         return
@@ -235,6 +367,10 @@ def _merge_sentence_chunks(
     join_single_syllable = bool(merge_space_cfg.get("join_single_syllable", True))
     require_prev_hangul = bool(merge_space_cfg.get("require_prev_hangul", True))
     require_next_hangul = bool(merge_space_cfg.get("require_next_hangul", True))
+    prev_hangul_regex = merge_space_cfg.get("prev_hangul_regex")
+    next_hangul_regex = merge_space_cfg.get("next_hangul_regex")
+    prev_hangul_rx = re.compile(prev_hangul_regex) if prev_hangul_regex else None
+    next_hangul_rx = re.compile(next_hangul_regex) if next_hangul_regex else None
     accept_hex = bool(color_cfg.get("accept_hex", True))
     accept_rgb_list = bool(color_cfg.get("accept_rgb_list", True))
     accept_numbers = bool(color_cfg.get("accept_numbers", False))
@@ -248,8 +384,8 @@ def _merge_sentence_chunks(
             # Avoid inserting space for mid-word Korean splits, but keep it for normal word boundaries.
             last_token = prev_text.split()[-1] if prev_text else ""
             next_token = text.split()[0] if text else ""
-            prev_hangul = bool(re.match(r"[가-힣]$", last_token)) if last_token else False
-            next_hangul = bool(re.match(r"^[가-힣]", next_token)) if next_token else False
+            prev_hangul = bool(prev_hangul_rx.search(last_token)) if (prev_hangul_rx and last_token) else False
+            next_hangul = bool(next_hangul_rx.search(next_token)) if (next_hangul_rx and next_token) else False
             can_join = bool(merge_space_cfg.get("enabled", True))
             if require_prev_hangul:
                 can_join = can_join and prev_hangul
@@ -270,29 +406,57 @@ def _merge_sentence_chunks(
         prev_text = text
 
         colors = seg.get("colors")
-        span_color = None
-        if isinstance(colors, list):
-            span_color = _pick_span_color(colors, accept_hex, accept_rgb_list, accept_numbers)
-        elif colors is not None:
-            span_color = _pick_span_color([colors], accept_hex, accept_rgb_list, accept_numbers)
         font_name = seg.get("font_name_mode")
         bold_flag = any(pat.search(font_name) for pat in bold_font_patterns) if font_name else False
         italic_flag = any(pat.search(font_name) for pat in italic_font_patterns) if font_name else False
         underline_flag = any(pat.search(font_name) for pat in underline_font_patterns) if font_name else False
 
-        if span_color or seg.get("font_size_avg") or font_name:
-            span_entry = {
-                "start": start,
-                "end": cursor,
-                "color": span_color,
-                "font_size_avg": seg.get("font_size_avg"),
-                "font_size_max": seg.get("font_size_max"),
-                "font_name": font_name,
-                "bold": True if bold_flag else None,
-                "italic": True if italic_flag else None,
-                "underline": True if underline_flag else None,
-            }
-            style_spans.append(_drop_none(span_entry))
+        token_spans = None
+        if isinstance(colors, list):
+            token_spans = _token_color_spans(
+                text,
+                colors,
+                start,
+                accept_hex,
+                accept_rgb_list,
+                accept_numbers,
+                token_regex,
+                token_break_chars,
+            )
+
+        if token_spans:
+            for span_start, span_end, span_color in token_spans:
+                span_entry = {
+                    "start": span_start,
+                    "end": span_end,
+                    "color": span_color,
+                    "font_size_avg": seg.get("font_size_avg"),
+                    "font_size_max": seg.get("font_size_max"),
+                    "font_name": font_name,
+                    "bold": True if bold_flag else None,
+                    "italic": True if italic_flag else None,
+                    "underline": True if underline_flag else None,
+                }
+                style_spans.append(_drop_none(span_entry))
+        else:
+            span_color = None
+            if isinstance(colors, list):
+                span_color = _pick_span_color(colors, accept_hex, accept_rgb_list, accept_numbers)
+            elif colors is not None:
+                span_color = _pick_span_color([colors], accept_hex, accept_rgb_list, accept_numbers)
+            if span_color or seg.get("font_size_avg") or font_name:
+                span_entry = {
+                    "start": start,
+                    "end": cursor,
+                    "color": span_color,
+                    "font_size_avg": seg.get("font_size_avg"),
+                    "font_size_max": seg.get("font_size_max"),
+                    "font_name": font_name,
+                    "bold": True if bold_flag else None,
+                    "italic": True if italic_flag else None,
+                    "underline": True if underline_flag else None,
+                }
+                style_spans.append(_drop_none(span_entry))
 
     content = "".join(pieces).strip()
     if not content:
@@ -307,8 +471,6 @@ def _merge_sentence_chunks(
     font_sizes = [s.get("font_size_max") for s in seg_buffer if isinstance(s.get("font_size_max"), (int, float))]
     chunk_max_font_size = max(font_sizes) if font_sizes else None
 
-    span_colors = [s.get("color") for s in style_spans if s.get("color") is not None]
-    color_info = _summarize_colors(span_colors)
 
     chunk_type = "heading" if heading_min_font_size and chunk_max_font_size and chunk_max_font_size >= heading_min_font_size else "body"
 
@@ -320,8 +482,6 @@ def _merge_sentence_chunks(
             "pages": pages,
             "source_segments": source_ids,
             "degraded": degraded,
-            "has_color": color_info["has_color"],
-            "dominant_color": color_info["dominant_color"],
             "header_footer": None,
             "chunk_type": chunk_type,
             "max_font_size": chunk_max_font_size,
@@ -360,11 +520,18 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     heading_min_font_size = cfg.get("heading_min_font_size")
     heading_min_font_size = float(heading_min_font_size) if heading_min_font_size is not None else None
     sentence_end_regexes = [re.compile(pat) for pat in cfg["sentence_end_patterns"]]
+    sentence_end_exceptions = _compile_sentence_end_exceptions(cfg.get("sentence_end_exceptions", []))
     bold_font_patterns = [re.compile(pat) for pat in cfg.get("bold_font_patterns", [])]
     italic_font_patterns = [re.compile(pat) for pat in cfg.get("italic_font_patterns", [])]
     underline_font_patterns = [re.compile(pat) for pat in cfg.get("underline_font_patterns", [])]
     merge_space_cfg = cfg.get("merge_space", {}) if isinstance(cfg, dict) else {}
     color_cfg = cfg.get("color_handling", {}) if isinstance(cfg, dict) else {}
+    style_span_cfg = cfg.get("style_span_split", {}) if isinstance(cfg, dict) else {}
+    token_regex_pattern = style_span_cfg.get("token_regex")
+    if not token_regex_pattern:
+        raise RuntimeError("Missing style_span_split.token_regex in structurer rules.")
+    token_regex = re.compile(token_regex_pattern)
+    token_break_chars = _normalize_break_chars(style_span_cfg.get("token_break_chars"))
 
     header_regexes = [re.compile(pat) for pat in cfg["header_regexes"]]
     footer_regexes = [re.compile(pat) for pat in cfg["footer_regexes"]]
@@ -379,9 +546,15 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     article_list_cfg = cfg.get("article_list_split", {}) if isinstance(cfg, dict) else {}
     article_list_enabled = bool(article_list_cfg.get("enabled", False))
     article_list_patterns = [re.compile(p) for p in article_list_cfg.get("patterns", [])]
-    article_list_skip_angle = bool(article_list_cfg.get("skip_if_angle_brackets", False))
-    section_break_regexes = heading_patterns or [re.compile(r"$^")]
-    heading_inline_regexes = heading_inline_patterns or [re.compile(r"$^")]
+    article_list_prefix_regex = article_list_cfg.get("required_prefix_regex")
+    article_list_prefix_rx = re.compile(article_list_prefix_regex) if article_list_prefix_regex else None
+    article_list_skip_contains = [re.compile(p) for p in article_list_cfg.get("skip_if_contains_regexes", [])]
+    noop_regex = cfg.get("noop_regex")
+    if not noop_regex:
+        raise RuntimeError("Missing noop_regex in structurer rules.")
+    noop_regexes = [re.compile(noop_regex)]
+    section_break_regexes = heading_patterns or noop_regexes
+    heading_inline_regexes = heading_inline_patterns or noop_regexes
     exception_cfg = cfg.get("exceptions", {}) if isinstance(cfg, dict) else {}
     disable_heading_after = [re.compile(p) for p in exception_cfg.get("disable_heading_after", [])]
     heading_disabled = False
@@ -390,6 +563,21 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     chunks: List[Dict[str, Any]] = []
 
     pages = _bucket_by_page(segments)
+    ordered_pages = sorted(pages.items())
+    ordered_segs = [seg for _, segs in ordered_pages for seg in segs]
+    next_text_by_segment_id: Dict[str, str] = {}
+    for idx, seg in enumerate(ordered_segs):
+        seg_id = seg.get("segment_id")
+        if not seg_id:
+            continue
+        next_text = None
+        for next_seg in ordered_segs[idx + 1 :]:
+            raw = next_seg.get("text")
+            if isinstance(raw, str) and raw.strip():
+                next_text = raw.strip()
+                break
+        if next_text:
+            next_text_by_segment_id[seg_id] = next_text
 
     header_counter, footer_counter = _find_repeated_lines(pages, header_max_lines, footer_max_lines)
     repeated_headers = {
@@ -455,9 +643,9 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     def split_article_list(text: str) -> List[str]:
         if not text or not article_list_enabled or not article_list_patterns:
             return [text]
-        if not text.startswith("제"):
+        if article_list_prefix_rx and not article_list_prefix_rx.match(text):
             return [text]
-        if article_list_skip_angle and "<" in text:
+        if article_list_skip_contains and any(rx.search(text) for rx in article_list_skip_contains):
             return [text]
         for rx in article_list_patterns:
             m = rx.search(text)
@@ -468,7 +656,7 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                     return [head, tail]
         return [text]
 
-    for page_num, segs in sorted(pages.items()):
+    for page_num, segs in ordered_pages:
         for idx_within_page, seg in enumerate(segs):
             raw_text = seg.get("text", "")
             text = raw_text.strip() if isinstance(raw_text, str) else ""
@@ -534,6 +722,11 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                 for ap in article_parts:
                     list_parts.extend(split_by_list(ap))
                 for list_idx, list_text in enumerate(list_parts):
+                    next_text = None
+                    if list_idx + 1 < len(list_parts):
+                        next_text = list_parts[list_idx + 1].strip()
+                    else:
+                        next_text = next_text_by_segment_id.get(seg.get("segment_id"))
                     part_seg = seg if (part_idx == 0 and list_idx == 0) else {
                         **seg,
                         "segment_id": f"{seg.get('segment_id')}-part{part_idx:02d}-list{list_idx:02d}",
@@ -554,6 +747,8 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                                 underline_font_patterns,
                                 merge_space_cfg,
                                 color_cfg,
+                                token_regex,
+                                token_break_chars,
                             )
 
                     # If a new section heading starts, flush current buffer first.
@@ -571,10 +766,12 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                                 underline_font_patterns,
                                 merge_space_cfg,
                                 color_cfg,
+                                token_regex,
+                                token_break_chars,
                             )
 
                     sentence_buffer.append(part_seg)
-                    if _is_sentence_end(list_text, sentence_end_regexes):
+                    if _is_sentence_end_with_exceptions(list_text, sentence_end_regexes, sentence_end_exceptions, next_text):
                         _merge_sentence_chunks(
                             doc_id,
                             filename,
@@ -587,6 +784,8 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
                             underline_font_patterns,
                             merge_space_cfg,
                             color_cfg,
+                            token_regex,
+                            token_break_chars,
                         )
 
     _merge_sentence_chunks(
@@ -601,6 +800,8 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
         underline_font_patterns,
         merge_space_cfg,
         color_cfg,
+        token_regex,
+        token_break_chars,
     )
 
     structured = {

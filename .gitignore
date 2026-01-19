@@ -47,6 +47,7 @@ data/**/*
 !data/normalization/20260118_1305/01_Cleansed
 !data/normalization/20260118_1305/02_Structured
 !data/normalization/20260118_1305/structured_texts
+!data/normalization/20260118_1305/visuals
 !data/parsed_raw/
 !data/parsed_raw/20260118_1305/
 !data/preprocess/
@@ -61,6 +62,7 @@ data/**/*
 !data/normalization/20260118_1305/01_Cleansed/저작권법_법률__제20841호__20250926__pdf_results.json
 !data/normalization/20260118_1305/02_Structured/저작권법_법률__제20841호__20250926__pdf_structured.json
 !data/normalization/20260118_1305/structured_texts/structured_contents_grouped_output.txt
+!data/normalization/20260118_1305/visuals/chunk_color_visual_review.html
 
 !data/parsed_raw/20260118_1305/저작권법_법률__제20841호__20250926__pdf_results.json
 
