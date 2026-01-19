@@ -303,28 +303,68 @@ def _token_color_spans(
     break_chars: Optional[set],
 ) -> Optional[List[Tuple[int, int, Optional[Any]]]]:
     tokens = _iter_token_spans(text, token_regex, break_chars)
-    if not tokens or len(tokens) != len(colors):
+    if tokens and len(tokens) == len(colors):
+        spans: List[Tuple[int, int, Optional[Any]]] = []
+        run_start = None
+        run_end = None
+        run_color = None
+        for (tok_start, tok_end), raw_color in zip(tokens, colors):
+            token_color = _pick_span_color([raw_color], accept_hex, accept_rgb_list, accept_numbers)
+            token_start = start + tok_start
+            token_end = start + tok_end
+            if run_start is None:
+                run_start = token_start
+                run_end = token_end
+                run_color = token_color
+                continue
+            if token_color == run_color:
+                run_end = token_end
+                continue
+            spans.append((run_start, run_end, run_color))
+            run_start = token_start
+            run_end = token_end
+            run_color = token_color
+        if run_start is not None:
+            spans.append((run_start, run_end, run_color))
+        return spans
+
+    base_tokens = _iter_token_spans(text, token_regex, None)
+    if not base_tokens or len(base_tokens) != len(colors):
         return None
+
+    def split_token_spans(token_text: str, token_start: int) -> List[Tuple[int, int]]:
+        spans: List[Tuple[int, int]] = []
+        if not break_chars:
+            spans.append((token_start, token_start + len(token_text)))
+            return spans
+        sub_start = 0
+        for idx, ch in enumerate(token_text):
+            if ch in break_chars and idx > sub_start:
+                spans.append((token_start + sub_start, token_start + idx))
+                sub_start = idx
+        spans.append((token_start + sub_start, token_start + len(token_text)))
+        return spans
+
     spans: List[Tuple[int, int, Optional[Any]]] = []
     run_start = None
     run_end = None
     run_color = None
-    for (tok_start, tok_end), raw_color in zip(tokens, colors):
+    for (tok_start, tok_end), raw_color in zip(base_tokens, colors):
         token_color = _pick_span_color([raw_color], accept_hex, accept_rgb_list, accept_numbers)
-        token_start = start + tok_start
-        token_end = start + tok_end
-        if run_start is None:
-            run_start = token_start
-            run_end = token_end
+        token_text = text[tok_start:tok_end]
+        for sub_start, sub_end in split_token_spans(token_text, start + tok_start):
+            if run_start is None:
+                run_start = sub_start
+                run_end = sub_end
+                run_color = token_color
+                continue
+            if token_color == run_color:
+                run_end = sub_end
+                continue
+            spans.append((run_start, run_end, run_color))
+            run_start = sub_start
+            run_end = sub_end
             run_color = token_color
-            continue
-        if token_color == run_color:
-            run_end = token_end
-            continue
-        spans.append((run_start, run_end, run_color))
-        run_start = token_start
-        run_end = token_end
-        run_color = token_color
     if run_start is not None:
         spans.append((run_start, run_end, run_color))
     return spans
@@ -530,6 +570,9 @@ def structure_pdf(seg_json: Dict[str, Any]) -> Dict[str, Any]:
     token_regex_pattern = style_span_cfg.get("token_regex")
     if not token_regex_pattern:
         raise RuntimeError("Missing style_span_split.token_regex in structurer rules.")
+    if "\\\\" in token_regex_pattern:
+        # YAML에 이스케이프가 중복된 경우를 방지한다.
+        token_regex_pattern = token_regex_pattern.replace("\\\\", "\\")
     token_regex = re.compile(token_regex_pattern)
     token_break_chars = _normalize_break_chars(style_span_cfg.get("token_break_chars"))
 

@@ -108,6 +108,14 @@
           },
           {
             "start": 64,
+            "end": 91,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 92,
             "end": 109,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -137,6 +145,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 33,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 34,
             "end": 93,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -2009,6 +2025,14 @@
           },
           {
             "start": 123,
+            "end": 151,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 151,
             "end": 167,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -2055,6 +2079,14 @@
           },
           {
             "start": 122,
+            "end": 148,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 148,
             "end": 165,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -2092,6 +2124,14 @@
           },
           {
             "start": 63,
+            "end": 79,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 79,
             "end": 96,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -2484,6 +2524,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 4,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 4,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -2699,6 +2747,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 60,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 61,
             "end": 64,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -2940,6 +2996,14 @@
           },
           {
             "start": 50,
+            "end": 58,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 59,
             "end": 76,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -3042,6 +3106,14 @@
           },
           {
             "start": 61,
+            "end": 85,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 85,
             "end": 102,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -3088,6 +3160,14 @@
           },
           {
             "start": 126,
+            "end": 134,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 135,
             "end": 152,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -3153,6 +3233,14 @@
           },
           {
             "start": 58,
+            "end": 89,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 90,
             "end": 106,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -3311,6 +3399,14 @@
           },
           {
             "start": 125,
+            "end": 133,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 133,
             "end": 164,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -3422,6 +3518,14 @@
           },
           {
             "start": 61,
+            "end": 83,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 83,
             "end": 113,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -3626,6 +3730,14 @@
           },
           {
             "start": 65,
+            "end": 77,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 77,
             "end": 107,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4221,6 +4333,14 @@
           },
           {
             "start": 66,
+            "end": 118,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 119,
             "end": 131,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4286,6 +4406,14 @@
           },
           {
             "start": 66,
+            "end": 106,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 107,
             "end": 138,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4388,6 +4516,14 @@
           },
           {
             "start": 130,
+            "end": 140,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 141,
             "end": 157,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4574,6 +4710,14 @@
           },
           {
             "start": 107,
+            "end": 122,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 123,
             "end": 139,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4871,6 +5015,14 @@
           },
           {
             "start": 45,
+            "end": 68,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 69,
             "end": 85,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4908,6 +5060,14 @@
           },
           {
             "start": 61,
+            "end": 93,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 93,
             "end": 109,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -4963,6 +5123,14 @@
           },
           {
             "start": 186,
+            "end": 209,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 209,
             "end": 239,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5139,6 +5307,14 @@
           },
           {
             "start": 188,
+            "end": 206,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 206,
             "end": 236,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5177,6 +5353,14 @@
           },
           {
             "start": 61,
+            "end": 106,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 106,
             "end": 135,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5231,6 +5415,14 @@
           },
           {
             "start": 122,
+            "end": 152,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 152,
             "end": 196,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5269,6 +5461,14 @@
           },
           {
             "start": 61,
+            "end": 119,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 119,
             "end": 122,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5463,6 +5663,14 @@
           },
           {
             "start": 60,
+            "end": 63,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 63,
             "end": 106,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5602,6 +5810,14 @@
           },
           {
             "start": 186,
+            "end": 189,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 189,
             "end": 248,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5835,6 +6051,14 @@
           },
           {
             "start": 65,
+            "end": 87,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 87,
             "end": 118,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5881,6 +6105,14 @@
           },
           {
             "start": 121,
+            "end": 153,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 153,
             "end": 183,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -5973,6 +6205,14 @@
           },
           {
             "start": 192,
+            "end": 205,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 206,
             "end": 223,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6094,6 +6334,14 @@
           },
           {
             "start": 160,
+            "end": 175,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 176,
             "end": 206,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6159,6 +6407,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 2,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 2,
             "end": 46,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6325,6 +6581,14 @@
           },
           {
             "start": 238,
+            "end": 260,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 261,
             "end": 291,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6473,6 +6737,14 @@
           },
           {
             "start": 122,
+            "end": 176,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 176,
             "end": 188,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6547,6 +6819,14 @@
           },
           {
             "start": 124,
+            "end": 137,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 137,
             "end": 167,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6648,6 +6928,14 @@
           },
           {
             "start": 244,
+            "end": 251,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 251,
             "end": 282,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6676,6 +6964,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 50,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 50,
             "end": 66,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6722,6 +7018,14 @@
           },
           {
             "start": 121,
+            "end": 126,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 126,
             "end": 156,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6759,6 +7063,14 @@
           },
           {
             "start": 62,
+            "end": 70,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 70,
             "end": 101,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6805,6 +7117,14 @@
           },
           {
             "start": 129,
+            "end": 151,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 152,
             "end": 182,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6907,6 +7227,14 @@
           },
           {
             "start": 105,
+            "end": 113,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 114,
             "end": 130,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -6962,6 +7290,14 @@
           },
           {
             "start": 179,
+            "end": 184,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 184,
             "end": 228,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7008,6 +7344,14 @@
           },
           {
             "start": 126,
+            "end": 166,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 166,
             "end": 182,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7037,6 +7381,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 36,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 36,
             "end": 52,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7111,6 +7463,14 @@
           },
           {
             "start": 41,
+            "end": 100,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 101,
             "end": 104,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7174,6 +7534,14 @@
           },
           {
             "start": 182,
+            "end": 195,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 195,
             "end": 211,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7220,6 +7588,14 @@
           },
           {
             "start": 121,
+            "end": 130,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 130,
             "end": 146,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7258,6 +7634,14 @@
           },
           {
             "start": 62,
+            "end": 66,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 66,
             "end": 82,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7415,6 +7799,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 2,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 2,
             "end": 32,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -7970,6 +8362,14 @@
           },
           {
             "start": 292,
+            "end": 316,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 317,
             "end": 333,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8303,6 +8703,14 @@
           },
           {
             "start": 110,
+            "end": 121,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 122,
             "end": 167,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8331,6 +8739,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 55,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 55,
             "end": 64,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8555,6 +8971,14 @@
           },
           {
             "start": 56,
+            "end": 99,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 100,
             "end": 132,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8600,6 +9024,14 @@
           },
           {
             "start": 64,
+            "end": 87,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 87,
             "end": 118,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8665,6 +9097,14 @@
           },
           {
             "start": 57,
+            "end": 105,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 106,
             "end": 133,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8907,6 +9347,14 @@
           },
           {
             "start": 48,
+            "end": 64,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 65,
             "end": 82,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -8935,6 +9383,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 48,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 48,
             "end": 65,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9010,6 +9466,14 @@
           },
           {
             "start": 104,
+            "end": 162,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 163,
             "end": 166,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9139,6 +9603,14 @@
           },
           {
             "start": 65,
+            "end": 105,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 106,
             "end": 123,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9176,6 +9648,14 @@
           },
           {
             "start": 65,
+            "end": 122,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 123,
             "end": 132,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9287,6 +9767,14 @@
           },
           {
             "start": 106,
+            "end": 126,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 127,
             "end": 144,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9325,6 +9813,14 @@
           },
           {
             "start": 59,
+            "end": 115,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 115,
             "end": 118,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9500,6 +9996,14 @@
           },
           {
             "start": 122,
+            "end": 130,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 130,
             "end": 160,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9723,6 +10227,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 2,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 3,
             "end": 34,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -9753,6 +10265,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 50,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 50,
             "end": 67,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10178,6 +10698,14 @@
           },
           {
             "start": 161,
+            "end": 186,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 187,
             "end": 232,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10252,6 +10780,14 @@
           },
           {
             "start": 125,
+            "end": 176,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 176,
             "end": 188,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10309,6 +10845,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 54,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 54,
             "end": 57,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10345,6 +10889,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 39,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 39,
             "end": 70,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10382,6 +10934,14 @@
           },
           {
             "start": 61,
+            "end": 111,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 111,
             "end": 135,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10447,6 +11007,14 @@
           },
           {
             "start": 63,
+            "end": 69,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 69,
             "end": 87,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10502,6 +11070,14 @@
           },
           {
             "start": 183,
+            "end": 190,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 191,
             "end": 235,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10557,6 +11133,14 @@
           },
           {
             "start": 184,
+            "end": 235,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 236,
             "end": 248,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10650,6 +11234,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 41,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 42,
             "end": 59,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10846,6 +11438,14 @@
           },
           {
             "start": 124,
+            "end": 181,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 181,
             "end": 184,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -10891,6 +11491,14 @@
           },
           {
             "start": 66,
+            "end": 71,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 72,
             "end": 102,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11049,6 +11657,14 @@
           },
           {
             "start": 51,
+            "end": 77,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 78,
             "end": 122,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11086,6 +11702,14 @@
           },
           {
             "start": 64,
+            "end": 109,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 109,
             "end": 139,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11300,6 +11924,14 @@
           },
           {
             "start": 62,
+            "end": 71,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 71,
             "end": 87,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11337,6 +11969,14 @@
           },
           {
             "start": 63,
+            "end": 75,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 75,
             "end": 91,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11374,6 +12014,14 @@
           },
           {
             "start": 62,
+            "end": 110,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 110,
             "end": 135,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11439,6 +12087,14 @@
           },
           {
             "start": 60,
+            "end": 66,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 66,
             "end": 96,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11476,6 +12132,14 @@
           },
           {
             "start": 62,
+            "end": 70,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 70,
             "end": 86,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -11513,6 +12177,14 @@
           },
           {
             "start": 64,
+            "end": 104,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 104,
             "end": 134,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12249,6 +12921,14 @@
           },
           {
             "start": 67,
+            "end": 125,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 126,
             "end": 129,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12338,6 +13018,14 @@
           },
           {
             "start": 46,
+            "end": 51,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 52,
             "end": 69,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12367,6 +13055,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 57,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 57,
             "end": 60,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12431,6 +13127,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 2,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 2,
             "end": 19,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12459,6 +13163,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 10,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 11,
             "end": 28,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12533,6 +13245,14 @@
           },
           {
             "start": 112,
+            "end": 135,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 136,
             "end": 153,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12570,6 +13290,14 @@
           },
           {
             "start": 61,
+            "end": 72,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 72,
             "end": 89,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12607,6 +13335,14 @@
           },
           {
             "start": 62,
+            "end": 103,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 103,
             "end": 120,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12645,6 +13381,14 @@
           },
           {
             "start": 59,
+            "end": 87,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 87,
             "end": 104,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12727,6 +13471,14 @@
           },
           {
             "start": 106,
+            "end": 115,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 116,
             "end": 147,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12764,6 +13516,14 @@
           },
           {
             "start": 59,
+            "end": 67,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 67,
             "end": 84,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12810,6 +13570,14 @@
           },
           {
             "start": 125,
+            "end": 179,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 179,
             "end": 192,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12912,6 +13680,14 @@
           },
           {
             "start": 44,
+            "end": 92,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 93,
             "end": 110,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -12950,6 +13726,14 @@
           },
           {
             "start": 58,
+            "end": 91,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 91,
             "end": 108,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13023,6 +13807,14 @@
           },
           {
             "start": 43,
+            "end": 99,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 100,
             "end": 109,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13099,6 +13891,14 @@
           },
           {
             "start": 122,
+            "end": 152,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 152,
             "end": 169,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13189,6 +13989,14 @@
           },
           {
             "start": 105,
+            "end": 113,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 114,
             "end": 158,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13227,6 +14035,14 @@
           },
           {
             "start": 58,
+            "end": 106,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 106,
             "end": 123,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13272,6 +14088,14 @@
           },
           {
             "start": 61,
+            "end": 76,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 76,
             "end": 106,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13311,6 +14135,14 @@
           },
           {
             "start": 58,
+            "end": 80,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 80,
             "end": 97,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13373,6 +14205,14 @@
           },
           {
             "start": 125,
+            "end": 150,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 151,
             "end": 168,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13571,6 +14411,14 @@
           },
           {
             "start": 137,
+            "end": 148,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 148,
             "end": 179,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13595,6 +14443,14 @@
           },
           {
             "start": 246,
+            "end": 261,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 262,
             "end": 279,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -13966,6 +14822,14 @@
           },
           {
             "start": 45,
+            "end": 53,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 54,
             "end": 98,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -14431,6 +15295,14 @@
           },
           {
             "start": 61,
+            "end": 80,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 80,
             "end": 97,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -14848,6 +15720,14 @@
           },
           {
             "start": 65,
+            "end": 71,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 72,
             "end": 103,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15024,6 +15904,14 @@
           },
           {
             "start": 101,
+            "end": 147,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 148,
             "end": 165,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15052,6 +15940,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 53,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 53,
             "end": 69,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15126,6 +16022,14 @@
           },
           {
             "start": 62,
+            "end": 78,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 78,
             "end": 108,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15219,6 +16123,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 53,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 53,
             "end": 69,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15256,6 +16168,14 @@
           },
           {
             "start": 62,
+            "end": 94,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 94,
             "end": 111,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15293,6 +16213,14 @@
           },
           {
             "start": 60,
+            "end": 61,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 61,
             "end": 78,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15367,6 +16295,14 @@
           },
           {
             "start": 88,
+            "end": 142,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 143,
             "end": 152,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15434,6 +16370,14 @@
           },
           {
             "start": 64,
+            "end": 68,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 68,
             "end": 84,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15524,6 +16468,14 @@
           },
           {
             "start": 116,
+            "end": 146,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 147,
             "end": 164,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15711,6 +16663,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 61,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 62,
             "end": 65,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15821,6 +16781,14 @@
           },
           {
             "start": 97,
+            "end": 145,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 146,
             "end": 163,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15858,6 +16826,14 @@
           },
           {
             "start": 64,
+            "end": 68,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 68,
             "end": 84,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -15960,6 +16936,14 @@
           },
           {
             "start": 64,
+            "end": 68,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 68,
             "end": 84,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -16035,6 +17019,14 @@
           },
           {
             "start": 83,
+            "end": 140,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 141,
             "end": 144,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -16082,6 +17074,14 @@
           },
           {
             "start": 64,
+            "end": 68,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 68,
             "end": 84,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -16340,6 +17340,14 @@
           },
           {
             "start": 54,
+            "end": 66,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 67,
             "end": 84,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -16461,6 +17469,14 @@
           },
           {
             "start": 62,
+            "end": 90,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 90,
             "end": 120,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -16665,6 +17681,14 @@
           },
           {
             "start": 123,
+            "end": 134,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 135,
             "end": 180,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -16711,6 +17735,14 @@
           },
           {
             "start": 124,
+            "end": 137,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 137,
             "end": 154,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -17333,6 +18365,14 @@
           },
           {
             "start": 180,
+            "end": 224,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 224,
             "end": 250,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -17491,6 +18531,14 @@
           },
           {
             "start": 40,
+            "end": 105,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 106,
             "end": 115,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -17742,6 +18790,14 @@
           },
           {
             "start": 60,
+            "end": 114,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 114,
             "end": 126,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -18262,6 +19318,14 @@
           },
           {
             "start": 61,
+            "end": 93,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 93,
             "end": 109,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -18336,6 +19400,14 @@
           },
           {
             "start": 104,
+            "end": 116,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 117,
             "end": 133,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -18420,6 +19492,14 @@
           },
           {
             "start": 127,
+            "end": 158,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 158,
             "end": 174,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -18559,6 +19639,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 17,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 18,
             "end": 35,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -18763,6 +19851,14 @@
           },
           {
             "start": 165,
+            "end": 170,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 171,
             "end": 214,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -19041,6 +20137,14 @@
           },
           {
             "start": 60,
+            "end": 75,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 75,
             "end": 106,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -19088,6 +20192,14 @@
           },
           {
             "start": 123,
+            "end": 136,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 136,
             "end": 166,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -19170,6 +20282,14 @@
           },
           {
             "start": 109,
+            "end": 153,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 154,
             "end": 170,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -19395,6 +20515,14 @@
           },
           {
             "start": 120,
+            "end": 175,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 175,
             "end": 178,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -19419,6 +20547,14 @@
           },
           {
             "start": 212,
+            "end": 222,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 223,
             "end": 237,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -19660,6 +20796,14 @@
           },
           {
             "start": 104,
+            "end": 118,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 119,
             "end": 163,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20300,6 +21444,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 5,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 5,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20346,6 +21498,14 @@
           },
           {
             "start": 122,
+            "end": 133,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 133,
             "end": 150,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20383,6 +21543,14 @@
           },
           {
             "start": 59,
+            "end": 100,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 100,
             "end": 117,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20466,6 +21634,14 @@
           },
           {
             "start": 175,
+            "end": 196,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 197,
             "end": 214,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20512,6 +21688,14 @@
           },
           {
             "start": 121,
+            "end": 148,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 148,
             "end": 178,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20567,6 +21751,14 @@
           },
           {
             "start": 179,
+            "end": 227,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 227,
             "end": 244,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20686,6 +21878,14 @@
           },
           {
             "start": 305,
+            "end": 312,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 312,
             "end": 343,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -20946,6 +22146,14 @@
           },
           {
             "start": 63,
+            "end": 96,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 96,
             "end": 112,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21187,6 +22395,14 @@
           },
           {
             "start": 60,
+            "end": 101,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 101,
             "end": 118,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21419,6 +22635,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 41,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 42,
             "end": 59,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21456,6 +22680,14 @@
           },
           {
             "start": 60,
+            "end": 61,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 61,
             "end": 78,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21493,6 +22725,14 @@
           },
           {
             "start": 61,
+            "end": 67,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 67,
             "end": 83,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21521,6 +22761,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 55,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 55,
             "end": 64,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21577,6 +22825,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 24,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 25,
             "end": 42,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -21651,6 +22907,14 @@
           },
           {
             "start": 104,
+            "end": 126,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 127,
             "end": 171,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -22327,6 +23591,14 @@
           },
           {
             "start": 100,
+            "end": 115,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 116,
             "end": 133,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23011,6 +24283,14 @@
           },
           {
             "start": 196,
+            "end": 260,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 261,
             "end": 270,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23168,6 +24448,14 @@
           },
           {
             "start": 163,
+            "end": 186,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 187,
             "end": 232,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23214,6 +24502,14 @@
           },
           {
             "start": 117,
+            "end": 172,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 172,
             "end": 184,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23363,6 +24659,14 @@
           },
           {
             "start": 60,
+            "end": 108,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 108,
             "end": 124,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23418,6 +24722,14 @@
           },
           {
             "start": 177,
+            "end": 196,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 196,
             "end": 212,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23464,6 +24776,14 @@
           },
           {
             "start": 118,
+            "end": 123,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 123,
             "end": 139,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23529,6 +24849,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 2,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 2,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23566,6 +24894,14 @@
           },
           {
             "start": 62,
+            "end": 94,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 94,
             "end": 138,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23864,6 +25200,14 @@
           },
           {
             "start": 62,
+            "end": 99,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 99,
             "end": 115,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23910,6 +25254,14 @@
           },
           {
             "start": 120,
+            "end": 152,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 152,
             "end": 196,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23947,6 +25299,14 @@
           },
           {
             "start": 61,
+            "end": 86,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 86,
             "end": 130,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -23984,6 +25344,14 @@
           },
           {
             "start": 61,
+            "end": 93,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 93,
             "end": 123,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24021,6 +25389,14 @@
           },
           {
             "start": 59,
+            "end": 92,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 92,
             "end": 122,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24095,6 +25471,14 @@
           },
           {
             "start": 101,
+            "end": 124,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 125,
             "end": 157,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24141,6 +25525,14 @@
           },
           {
             "start": 117,
+            "end": 120,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 120,
             "end": 136,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24197,6 +25589,14 @@
           },
           {
             "start": 186,
+            "end": 234,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 234,
             "end": 251,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24242,6 +25642,14 @@
           },
           {
             "start": 60,
+            "end": 87,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 87,
             "end": 104,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24279,6 +25687,14 @@
           },
           {
             "start": 60,
+            "end": 79,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 79,
             "end": 96,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24372,6 +25788,14 @@
           },
           {
             "start": 61,
+            "end": 93,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 93,
             "end": 111,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24623,6 +26047,14 @@
           },
           {
             "start": 126,
+            "end": 133,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 134,
             "end": 164,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24688,6 +26120,14 @@
           },
           {
             "start": 51,
+            "end": 60,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 61,
             "end": 78,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24725,6 +26165,14 @@
           },
           {
             "start": 57,
+            "end": 78,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 78,
             "end": 95,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24763,6 +26211,14 @@
           },
           {
             "start": 59,
+            "end": 116,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 116,
             "end": 119,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24808,6 +26264,14 @@
           },
           {
             "start": 58,
+            "end": 84,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 84,
             "end": 102,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -24845,6 +26309,14 @@
           },
           {
             "start": 61,
+            "end": 93,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 93,
             "end": 111,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25058,6 +26530,14 @@
           },
           {
             "start": 47,
+            "end": 81,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 82,
             "end": 137,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25384,6 +26864,14 @@
           },
           {
             "start": 58,
+            "end": 85,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 85,
             "end": 115,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25477,6 +26965,14 @@
           },
           {
             "start": 62,
+            "end": 107,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 108,
             "end": 134,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25588,6 +27084,14 @@
           },
           {
             "start": 175,
+            "end": 213,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 214,
             "end": 254,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25653,6 +27157,14 @@
           },
           {
             "start": 60,
+            "end": 83,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 83,
             "end": 127,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25746,6 +27258,14 @@
           },
           {
             "start": 62,
+            "end": 96,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 96,
             "end": 113,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25774,6 +27294,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 12,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 13,
             "end": 30,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -25858,6 +27386,14 @@
           },
           {
             "start": 173,
+            "end": 188,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 189,
             "end": 219,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -26129,6 +27665,14 @@
           },
           {
             "start": 61,
+            "end": 119,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 119,
             "end": 122,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -26332,6 +27876,14 @@
           },
           {
             "start": 65,
+            "end": 81,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 81,
             "end": 98,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -26436,6 +27988,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 58,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 58,
             "end": 61,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -26480,6 +28040,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 31,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 32,
             "end": 99,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -26825,6 +28393,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 6,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 6,
             "end": 20,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27059,6 +28635,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 57,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 57,
             "end": 60,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27188,6 +28772,14 @@
           },
           {
             "start": 53,
+            "end": 94,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 95,
             "end": 125,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27374,6 +28966,14 @@
           },
           {
             "start": 66,
+            "end": 83,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 84,
             "end": 100,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27532,6 +29132,14 @@
           },
           {
             "start": 123,
+            "end": 182,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 182,
             "end": 191,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27653,6 +29261,14 @@
           },
           {
             "start": 61,
+            "end": 107,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 107,
             "end": 123,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27690,6 +29306,14 @@
           },
           {
             "start": 61,
+            "end": 103,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 103,
             "end": 119,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27727,6 +29351,14 @@
           },
           {
             "start": 63,
+            "end": 90,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 90,
             "end": 106,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27876,6 +29508,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 50,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 50,
             "end": 67,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27905,6 +29545,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 25,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 25,
             "end": 42,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -27997,6 +29645,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 55,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 56,
             "end": 73,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28183,6 +29839,14 @@
           },
           {
             "start": 50,
+            "end": 56,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 57,
             "end": 87,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28211,6 +29875,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 34,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 34,
             "end": 51,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28239,6 +29911,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 8,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 9,
             "end": 23,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28267,6 +29947,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 55,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 56,
             "end": 72,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28388,6 +30076,14 @@
           },
           {
             "start": 62,
+            "end": 82,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 82,
             "end": 98,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28427,6 +30123,14 @@
           },
           {
             "start": 60,
+            "end": 70,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 70,
             "end": 87,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28443,6 +30147,14 @@
           },
           {
             "start": 107,
+            "end": 121,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 122,
             "end": 139,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -28685,6 +30397,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 48,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 49,
             "end": 66,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -29263,6 +30983,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 32,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 33,
             "end": 50,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -29635,6 +31363,14 @@
           },
           {
             "start": 111,
+            "end": 135,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 136,
             "end": 153,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -29673,6 +31409,14 @@
           },
           {
             "start": 64,
+            "end": 121,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 121,
             "end": 124,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -29746,6 +31490,14 @@
           },
           {
             "start": 61,
+            "end": 102,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 102,
             "end": 134,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -29960,6 +31712,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 40,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 40,
             "end": 72,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -29997,6 +31757,14 @@
           },
           {
             "start": 60,
+            "end": 98,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 98,
             "end": 116,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30026,6 +31794,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 41,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 41,
             "end": 59,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30210,6 +31986,14 @@
           },
           {
             "start": 179,
+            "end": 208,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 209,
             "end": 239,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30395,6 +32179,14 @@
           },
           {
             "start": 50,
+            "end": 59,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 60,
             "end": 77,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30534,6 +32326,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 48,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 48,
             "end": 65,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30562,6 +32362,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 4,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 4,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30645,6 +32453,14 @@
           },
           {
             "start": 176,
+            "end": 210,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 211,
             "end": 227,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30691,6 +32507,14 @@
           },
           {
             "start": 123,
+            "end": 143,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 143,
             "end": 173,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30728,6 +32552,14 @@
           },
           {
             "start": 60,
+            "end": 80,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 80,
             "end": 97,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -30766,6 +32598,14 @@
           },
           {
             "start": 64,
+            "end": 113,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 113,
             "end": 130,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -31089,6 +32929,14 @@
           },
           {
             "start": 64,
+            "end": 118,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 119,
             "end": 128,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -31172,6 +33020,14 @@
           },
           {
             "start": 192,
+            "end": 237,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 238,
             "end": 255,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -31764,6 +33620,14 @@
           },
           {
             "start": 450,
+            "end": 502,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 503,
             "end": 515,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -32608,6 +34472,14 @@
           },
           {
             "start": 122,
+            "end": 133,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 134,
             "end": 192,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -32719,6 +34591,14 @@
           },
           {
             "start": 66,
+            "end": 104,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 105,
             "end": 135,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -32784,6 +34664,14 @@
           },
           {
             "start": 56,
+            "end": 82,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 83,
             "end": 150,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -32970,6 +34858,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 2,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 2,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33062,6 +34958,14 @@
           },
           {
             "start": 218,
+            "end": 254,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 255,
             "end": 299,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33099,6 +35003,14 @@
           },
           {
             "start": 61,
+            "end": 77,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 77,
             "end": 108,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33136,6 +35048,14 @@
           },
           {
             "start": 62,
+            "end": 84,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 84,
             "end": 115,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33164,6 +35084,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 4,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 4,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33193,6 +35121,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 48,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 48,
             "end": 65,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33229,6 +35165,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 54,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 54,
             "end": 63,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33340,6 +35284,14 @@
           },
           {
             "start": 154,
+            "end": 194,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 195,
             "end": 212,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33451,6 +35403,14 @@
           },
           {
             "start": 179,
+            "end": 207,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 207,
             "end": 238,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33561,6 +35521,14 @@
           },
           {
             "start": 305,
+            "end": 330,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 330,
             "end": 347,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33838,6 +35806,14 @@
           },
           {
             "start": 107,
+            "end": 114,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 115,
             "end": 132,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -33960,6 +35936,14 @@
           },
           {
             "start": 63,
+            "end": 123,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 123,
             "end": 125,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34005,6 +35989,14 @@
           },
           {
             "start": 58,
+            "end": 99,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 99,
             "end": 116,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34043,6 +36035,14 @@
           },
           {
             "start": 62,
+            "end": 75,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 75,
             "end": 105,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34116,6 +36116,14 @@
           },
           {
             "start": 37,
+            "end": 76,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 77,
             "end": 94,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34144,6 +36152,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 37,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 37,
             "end": 54,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34173,6 +36189,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 4,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 4,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34210,6 +36234,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 58,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 59,
             "end": 62,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34255,6 +36287,14 @@
           },
           {
             "start": 57,
+            "end": 65,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 65,
             "end": 82,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34292,6 +36332,14 @@
           },
           {
             "start": 60,
+            "end": 63,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 63,
             "end": 80,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34413,6 +36461,14 @@
           },
           {
             "start": 57,
+            "end": 72,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 73,
             "end": 104,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34515,6 +36571,14 @@
           },
           {
             "start": 63,
+            "end": 66,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 66,
             "end": 111,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34832,6 +36896,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 5,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 5,
             "end": 19,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34861,6 +36933,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 5,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 5,
             "end": 19,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -34898,6 +36978,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 64,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 65,
             "end": 68,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35196,6 +37284,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 22,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 22,
             "end": 39,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35232,6 +37328,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 51,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 52,
             "end": 69,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35316,6 +37420,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 5,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 5,
             "end": 19,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35437,6 +37549,14 @@
           },
           {
             "start": 67,
+            "end": 117,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 118,
             "end": 135,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35482,6 +37602,14 @@
           },
           {
             "start": 69,
+            "end": 77,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 78,
             "end": 109,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35584,6 +37712,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 5,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 5,
             "end": 19,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35639,6 +37775,14 @@
           },
           {
             "start": 192,
+            "end": 211,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 212,
             "end": 242,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -35751,6 +37895,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 46,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 46,
             "end": 73,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -36012,6 +38164,14 @@
           },
           {
             "start": 66,
+            "end": 99,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 99,
             "end": 116,
             "color": "#0000FF",
             "font_size_avg": 10.0,
@@ -36096,6 +38256,14 @@
         "style_spans": [
           {
             "start": 0,
+            "end": 4,
+            "color": "#000000",
+            "font_size_avg": 10.0,
+            "font_size_max": 10.0,
+            "font_name": "BMLKAO+MalgunGothic"
+          },
+          {
+            "start": 4,
             "end": 18,
             "color": "#0000FF",
             "font_size_avg": 10.0,
