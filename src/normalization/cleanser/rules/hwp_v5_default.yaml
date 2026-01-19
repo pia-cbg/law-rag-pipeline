@@ -1,0 +1,10 @@
+regex:
+  - pattern: "[捤獥汤捯漠杳慤桥潴景氠瑢潠杳汫╨汫]"
+    replace: ""
+  # 새로 발견된 추가 패턴
+  - pattern: "[╣ॣ]"
+    replace: ""
+  - pattern: "[湰灧歭扯湯湷慴]"
+    replace: ""
+  - pattern: "[䶔̀溨]"
+    replace: ""

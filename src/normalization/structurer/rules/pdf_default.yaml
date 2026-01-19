@@ -1,0 +1,177 @@
+# 1. 반복 헤더/푸터 판정 정책
+header_regexes:
+  - "^\\s*저작권법\\s*$"
+footer_regexes:
+  - "^\\s*법제처\\s+\\d+\\s+국가법령정보센터\\s*$"
+# 상단/하단에서 헤더/푸터 후보로 볼 최대 라인 수
+header_max_lines: 3
+footer_max_lines: 3
+# 반복 라인 판정 비율(페이지 대비 등장 비율)
+repeat_ratio: 0.8
+# 반복 헤더/푸터 보존 여부
+preserve_repeated: true
+# 반복 라인 보존 모드(first/all)
+preserve_repeated_mode: first
+# 헤더/푸터 중 어떤 영역을 보존할지(header_only/footer_only/all)
+preserve_header_footer: header_only
+# 헤더/푸터 메타 태그 값
+header_tag: header
+footer_tag: footer
+
+# 2. 문장 종결/병합 정책(공통)
+# 헤딩 패턴이 없을 때 쓰는 기본 no-op 정규식
+noop_regex: '$^'
+# 문장 종결 판정 패턴(문장 병합 기준)
+sentence_end_patterns:
+  - '\.$'
+  - '!$'
+  - '\?$'
+  - '다\.$'
+  - '요\.$'
+  - '>$'
+# 문장 종결 예외(다음 라인 패턴에 따라 병합 유지)
+sentence_end_exceptions:
+  - end_pattern: '>$'
+    next_prefixes:
+      - '^\['
+
+# 3. 헤딩/목록 분리 정책
+# 헤딩 분리(장/절/관/조)
+heading_split:
+  enabled: true
+  # 줄 시작 헤딩 패턴
+  patterns:
+    - '^제\d+장\s+.*$'
+    - '^제\d+절\s+.*$'
+    - '^제\d+관\s+.*$'
+    - '^제\d+조(의\d+)?[(]'
+  # 줄 내부 헤딩 패턴(한 줄에 헤딩+본문 혼합 시 분리)
+  inline_patterns:
+    - '제\d+장\s+'
+    - '제\d+절\s+'
+    - '제\d+관\s+'
+    - '제\d+조(의\d+)?[(]'
+# 목록 분리(가.나.다 / ①② / 숫자 목록)
+list_split:
+  enabled: true
+  # 줄 내부 목록 패턴
+  inline_patterns:
+    - '(?:^|\s)[가-힣]\.(?=\s*[가-힣])'
+    - '[①-⑳]'
+  # 줄 시작 목록 패턴
+  start_patterns:
+    - '^\d{1,3}(?:의\d{1,3})?\.'
+    - '^[가-힣]\.'
+    - '^[①-⑳]'
+# 조문 내부 목록 분리(조문 내 번호/원문자)
+article_list_split:
+  enabled: true
+  # 본문 중간 목록 분리 패턴
+  patterns:
+    - '\s(?:\d{1,3}(?:의\d{1,3})?\.(?=\s*[^\d])|[①-⑳])'
+  # 적용 대상 라인 시작 조건
+  required_prefix_regex: '^제'
+  # 해당 정규식이 포함되면 분할을 생략
+  skip_if_contains_regexes:
+    - '<'
+# 예외 규칙
+exceptions:
+  # 특정 패턴 이후에는 헤딩 분리 비활성화
+  disable_heading_after: []
+
+# 4. 단어 병합 정책(한글 분절 공백 처리)
+merge_space:
+  enabled: true
+  # 단일 음절 분절 시 공백 제거 여부
+  join_single_syllable: true
+  # 이전 토큰의 끝 문자 판별 정규식
+  prev_hangul_regex: '[가-힣]$'
+  # 다음 토큰의 시작 문자 판별 정규식
+  next_hangul_regex: '^[가-힣]'
+  # 공백 유지 토큰(조사/접속어 등)
+  keep_space_tokens:
+    - '및'
+    - '과'
+    - '와'
+    - '또'
+    - '또는'
+    - '혹은'
+  # 다음 토큰이 이 접두로 시작하면 공백 유지
+  no_join_prefixes:
+    - '제'
+  # 공백 제거에 한글 조건 적용 여부
+  require_prev_hangul: true
+  require_next_hangul: true
+
+# 5. 색상 입력 포맷 허용 정책
+# 색상 입력 포맷 허용
+color_handling:
+  accept_hex: true
+  accept_rgb_list: true
+  accept_numbers: false
+
+# 6. 그룹 묶음 정책(청크가 끊겼을 때 동일 그룹으로 합치기)
+group_id:
+  enabled: true
+  # 그룹 시작으로 인식할 토큰(괄호/대괄호 등)
+  open_patterns:
+    - "<"
+    - "\\["
+  # 그룹 종료로 인식할 토큰
+  close_patterns:
+    - ">"
+    - "\\]"
+  # 다음 청크가 아래 패턴에 매칭되면 동일 그룹으로 묶음
+  attach_next_if_matches:
+    - '^\['
+    - '^<'
+  # 문장 병합 조건(라인 단위로 끊긴 문장을 다시 합침)
+  merge_sentence:
+    enabled: true
+    # 문장 종결 패턴(종결이면 기본적으로 병합 종료)
+    sentence_end_patterns:
+      - '\.$'
+      - '!$'
+      - '\?$'
+      - '다\.$'
+      - '요\.$'
+      - '>$'
+    # 문장 종결 예외(특정 패턴 뒤에는 계속 병합)
+    sentence_end_exceptions:
+      - end_pattern: '>$'
+        next_prefixes:
+          - '^\['
+    # 다음 라인이 이 패턴이면 병합 금지(새 조문/목록 시작)
+    block_if_next_matches:
+      - '^(?:제|\d{1,3}(?:의\d{1,3})?\.)'
+      - '^[가-힣]\.'
+      - '^[①-⑳]'
+    # 다음 라인이 이 패턴이면 병합 허용(예외적으로 목록도 붙임)
+    allow_if_next_matches:
+      - "^[가-힣]\\.(?:\\s*<|\\s*\\[|$)"
+    # 다음 라인이 이 정규식으로 시작하면 병합 허용
+    next_start_regex: '^[가-힣]'
+    # 다음 라인 한글 시작 여부를 추가로 확인
+    next_start_hangul: true
+
+# 7. 스타일 스팬 정렬 정책(색상 스팬 정렬용)
+# 스타일 스팬 정렬을 위한 토큰 분리 정책(색상 스팬 정렬용)
+style_span_split:
+  # 토큰화에 사용하는 기본 정규식
+  token_regex: '\\S+'
+  # 토큰 내에서 추가 분리할 문자들
+  token_break_chars: '<['
+
+# 8. 폰트/스타일 판정 정책
+# 헤딩으로 볼 최소 글자 크기(폰트 크기 기반)
+heading_min_font_size: 14
+# 폰트 이름이 아래 패턴에 매칭되면 굵게 처리
+bold_font_patterns:
+  - '(?i)bold'
+  - '(?i)bd'
+# 폰트 이름이 아래 패턴에 매칭되면 이탤릭 처리
+italic_font_patterns:
+  - '(?i)italic'
+  - '(?i)it'
+# 밑줄 처리용 폰트 패턴(필요 시 추가)
+underline_font_patterns: []
